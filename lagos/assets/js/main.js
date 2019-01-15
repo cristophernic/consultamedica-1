@@ -82,14 +82,6 @@ $( '.informacion').on('click', function() {
      $("#informacion").hide();
  });
 
-$('#configTab a').click(function (e) {
-  e.preventDefault()
-  $('#configTab a[data-toggle="tab"]').removeClass('active');
-  $(this).addClass('active');
-  $('div .tab-pane').removeClass('active');
-  $(this.hash).tab('show');
-});
-
 $( '#nuevoTipoConfig').on('click', function() {
 	$('#tipoConfig .tabla').hide();
 	$('#nuevoTipoConfig').hide();

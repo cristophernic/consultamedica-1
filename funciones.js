@@ -26,7 +26,7 @@ function crlIndependant(nt){
     var estSTD=( Math.pow((STD *STD + op_std_dev * op_std_dev ) , 0.5)  ) ;
     var logNT= Math.log10(NT);
     return probFinal=calcularProbabilidad(estMean,estSTD,logNT);
-  }
+}
 
 function crlDependant(nt,crl){
     var PI=3.14;
@@ -45,11 +45,9 @@ function crlDependant(nt,crl){
     var factor9=-0.3319 - (0.0379 * CRL  )
     var proportion=1/(1+Math.exp(-1*(factor9)))
     var Nproportion=1-proportion;
- 
- 
+
     var mixtureModel=(proportion*independantProb)+(Nproportion*probabilidadFinal);
     return ([probabilidadFinal,mixtureModel]);
- 
 }
 
 function relPrev(gestation){
