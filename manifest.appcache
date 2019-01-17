@@ -24,12 +24,7 @@ app.class.js
 main.js
 #imágenes
 img/ic_launcher-web.png
-img/blurred-greenish.jpg
-img/eco1.png
-img/eco2.png
-img/eco3.png
 img/icon-96x96.png
-img/calendario.png
 manifest.json
 bootstrap-datepicker.js
 datepicker.css

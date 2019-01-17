@@ -212,14 +212,6 @@ $(document).ready(function(){
 		$("#imagen\\.oculta\\.cuatro").delay( 2400 ).fadeIn( 400 ).delay( 3000 ).fadeOut( 400 );
 	});
 
-	$("#mostrar\\.pdf\\.registro").on("click", function(){
-		location.hash = '#registro';
-	});
-
-	$("#mostrar\\.pdf\\.consentimiento").on("click", function(){
-		location.hash = '#consentimiento'
-	});
-
 	$("#primtrim\\.adicionales\\.translucencia").on("click", function(event){
 		event.preventDefault();
 			calcularRiesgo();
@@ -252,116 +244,6 @@ $('#partos').on("change", function(){
 	else{
 		$('#itemGestasPrevias').addClass("d-none");
 	}
-});
-
-$( '#mensajeRestringido' ).on( 'click', function() {
-	$('#popupTitle').html("Sección restringida, solo disponible para usuarios capacitados en la plataforma.");
-	//remueve los botones de imprimir en caso de que estén
-	$( '#impEcoObsSegTrim2').remove();
-	$( '#impEcoObsSegTrim1').remove();
-	$( '#impDoppler3').remove();
-	$( '#impDoppler2').remove();
-	$( '#impDoppler1').remove();
-	$( '#impDoppler1').remove();
-        $('#popupBody').html("<form><h5 class='text-center'>Formulario solicitud de ingreso</h5><div class='row'><div class='form-group col'> <label for='contact-name'>Nombre, Apellido</label> <input type='text' class='form-control' id='contact-name'> </div><div class='form-group col'> <label for='contact-id'>RUT o DNI</label> <input type='text' class='form-control' id='contact-id'> </div></div><div class='row'><div class='form-group col'> <label for='contact-country'>Nacionalidad</label> <input type='text' class='form-control' id='contact-country'> </div><div class='form-group col'> <label for='contact-job-location'>Pais</label> <input type='text' class='form-control' id='contact-job-location'> </div></div><div class='row'><div class='form-group col'> <label for='contact-grade'>Año de título profesional</label> <input type='text' class='form-control' id='contact-grade'> </div><div class='form-group col'> <label for='contact-register'>N° de registro profesional</label> <input type='text' class='form-control' id='contact-register'> </div></div><div class='row'><div class='form-group col'> <label for='contact-expertise'>Años de experiencia en US Obstétrico</label> <input type='text' class='form-control' id='contact-expertise'> </div><div class='form-group col'> <label for='contact-job'>Profesión</label> <select class='form-control' id='contact-job'> <option>Médico con especialidad en perinatología</option> <option>Médico con especialidad en gineco-obstetricia</option> <option>Médico sin especialidad en gineco-obstetricia</option> <option>Médico en formación de la especialidad</option> <option>Otros, ultrosonografistas gineco - obstétrico</option> </select> </div></div><div class='row'><div class='form-group col'> <label for='contact-phone'>Teléfono de contacto</label> <input type='number' class='form-control' id='contact-phone'> </div><div class='form-group col'> <label for='contact-email'>Correo electrónico</label> <input type='email' class='form-control' id='contact-email'> <small id='emailHelp' class='form-text text-muted'>Nunca compartiremos tu correo con terceros</small></div></div><div class='row'><div class='col'><h5>Lugar de desempeño laboral</h5></div></div><div class='row'><div class='form-group col'> <label for='contact-city'>Ciudad</label> <input type='text' class='form-control' id='contact-city'> </div><div class='form-group col'> <label for='contact-ss'>Servicio de salud / Clínica</label>  <input type='text' class='form-control' id='contact-ss'></div><div class='form-group col'><label for='contact-h'>Hospital / Unidad académica</label>   <input type='text' class='form-control' id='contact-h'></div></div><div class='row'><div class='form-group col'> <label for='contact-consultorio'>Consultorio público</label> <input type='text' class='form-control' id='contact-consultorio'> </div><div class='form-group col'> <label for='contact-private-job'>Consulta privada</label> <input type='text' class='form-control' id='contact-private-job'> </div></div><div class='form-group'> <label for='contact-comments'>Comentarios y sugerencias</label> <input type='text' class='form-control' id='contact-comments'> </div></form>");
-	$( "#contact-name" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-id").focus()
-	  }
-	});
-	
-	$( "#contact-id" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-country").focus()
-	  }
-	});
-	
-	$( "#contact-country" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-job-location").focus()
-	  }
-	});
-	$( "#contact-job" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-city").focus()
-	  }
-	});
-	$( "#contact-grade" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-register").focus()
-	  }
-	});
-	
-	$( "#contact-register" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-expertise").focus()
-	  }
-	});
-	$( "#contact-expertise" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-job").focus()
-	  }
-	});
-	$( "#contact-job-location" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-grade").focus()
-	  }
-	});
-	$( "#contact-city" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-phone").focus()
-	  }
-	});
-	$( "#contact-phone" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-email").focus()
-	  }
-	});
-	$( "#contact-email" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-ss").focus()
-	  }
-	});
-	$( "#contact-ss" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-h").focus()
-	  }
-	});
-	$( "#contact-h" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-consultorio").focus()
-	  }
-	});
-	$( "#contact-consultorio" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-private-job").focus()
-	  }
-	});
-	$( "#contact-private-job" ).keypress(function( event ) {
-	  if ( event.which == 13 ) {
-	     event.preventDefault();
-	     $("#contact-comments").focus()
-	  }
-	});
-	$('#popupFooter').prepend("<button type='button' class='btn btn-outline-info' id='impDoppler1'>Genere PDF y envíe solicitud de ingreso</button>");
-	$( '#impDoppler1').on("click", function(){
-	      //crearInformeEcoPrimTrim();
-	});
-	$('#popupGenerico').modal('show');
 });
 
 $('#cccaController').on('click', function(){
@@ -579,120 +461,6 @@ $( '#embarazoSi' ).on( 'click', function() {
 	$("div[name='embarazo']").removeClass("d-none");
 });
 
-$('#semanasEcoPrim' ).on( 'change', function() {
-	var semanas = $(this).val();
-	var dias = $('#diasEcoPrim').val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outliner-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-$( '#diasEcoPrim' ).on( 'change', function() {
-	var semanas = $('#semanasEcoPrim').val();
-	var dias = $(this).val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
 $('#semanasEcoPrimTriso').on( 'change', function() {
 	var semanas = $(this).val();
 	var dias = $('#diasEcoPrim').val();
@@ -726,28 +494,8 @@ $('#semanasEcoPrimTriso').on( 'change', function() {
 	dias = dias / undia;
 	localStorage.eg = semanas + "." + dias;
 	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
 	$('#semanasEcoGen').val(semanas);
 	$('#diasEcoGen').val(dias);
-	$('#semanasEcoPrim').val(semanas);
-    $( '#diasEcoPrim' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outliner-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
 });
 
 $('#diasEcoPrimTriso').on( 'change', function() {
@@ -783,28 +531,8 @@ $('#diasEcoPrimTriso').on( 'change', function() {
 	dias = dias / undia;
 	localStorage.eg = semanas + "." + dias;
 	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
 	$('#semanasEcoGen').val(semanas);
 	$('#diasEcoGen').val(dias);
-	$('#semanasEcoPrim').val(semanas);
-    $( '#diasEcoPrim' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
 });
 
 $( '#semanasEcoGen' ).on( 'change', function() {
@@ -840,28 +568,8 @@ $( '#semanasEcoGen' ).on( 'change', function() {
 	dias = dias / undia;
 	localStorage.eg = semanas + "." + dias;
 	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
 	$('#semanasEcoPrimTriso').val(semanas);
     $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
 });
 
 $( '#diasEcoGen' ).on( 'change', function() {
@@ -897,373 +605,9 @@ $( '#diasEcoGen' ).on( 'change', function() {
 	dias = dias / undia;
 	localStorage.eg = semanas + "." + dias;
 	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
 	$('#semanasEcoPrimTriso').val(semanas);
     $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
 });
-
-$( '#semanasTipoEco' ).on( 'change', function() {
-	var semanas = $(this).val();
-	var dias = $('#diasTipoEco').val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$( '#semanasEcoGen' ).val(semanas);
-	$( '#diasEcoGen' ).val(dias);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-$( '#diasTipoEco' ).on( 'change', function() {
-	var semanas = $('#semanasTipoEco').val();
-	var dias = $(this).val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$( '#semanasEcoGen' ).val(semanas);
-	$( '#diasEcoGen' ).val(dias);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-
-$( '#semanasEcoObs' ).on( 'change', function() {
-	var semanas = $(this).val();
-	var dias = $('#diasEcoObs').val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-$( '#diasEcoObs' ).on( 'change', function() {
-	var semanas = $('#semanasEcoObs').val();
-	var dias = $(this).val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$('#semanasEcoDopp').val(semanas);
-	$('#diasEcoDopp').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-$( '#semanasEcoDopp' ).on( 'change', function() {
-	var semanas = $(this).val();
-	var dias = $('#diasEcoDopp').val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
-$( '#diasEcoDopp' ).on( 'change', function() {
-	var semanas = $('#semanasEcoDopp').val();
-	var dias = $(this).val();
-	var undia = 1000 * 60 * 60 * 24;
-	var unasemana = undia * 7;
-	
-	semanas = semanas * unasemana;
-	dias = dias * undia;
-	var eg = semanas + dias;
-	
-	var FExamen = $("input[name='fee']").val();
-	FExamen = FExamen.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FExamen = new Date (FExamen);
-	
-	var B = new Date();
-	B.setTime(FExamen.getTime() - eg);
-	
-	$("input[name='fum']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	var FUM = $("input[name='fum']").val();
-	FUM = FUM.split(/\//).reverse().join('/'); //convert dd/mm/yyy
-	FUM = new Date (FUM);
-	
-	B = new Date();
-	B.setTime(FUM.getTime() + 40 * unasemana); 
-	$("input[name='fpp']").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-	
-	localStorage.fum = $("input[name='fum']").val();
-    	localStorage.fee = $("input[name='fee']").val();
-	semanas = semanas / unasemana;
-	dias = dias / undia;
-	localStorage.eg = semanas + "." + dias;
-	$("input[name='eg']").val(localStorage.eg);
-	$('#semanasEcoObs').val(semanas);
-	$('#diasEcoObs').val(dias);
-	$('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	$( '#semanasTipoEco' ).val(semanas);
-	$( '#diasTipoEco' ).val(dias);
-	$('#semanasEcoPrim').val(semanas);
-	$( '#diasEcoPrim' ).val(dias);
-	$('#semanasEcoPrimTriso').val(semanas);
-    $( '#diasEcoPrimTriso' ).val(dias);
-	 //borrar los colores de las tarjetas
-	$("#ecografia\\.uno").removeClass("card-outline-primary");
-	$("#ecografia\\.dos").removeClass("card-outline-primary");
-	$("#ecografia\\.doppler").removeClass("card-outline-primary");
-	//determinar a quien le pongo el color
-	if (semanas < 15){
-		$("#ecografia\\.uno").addClass("card-outline-primary");
-	}
-	else{
-		$("#ecografia\\.dos").addClass("card-outline-primary");
-		$("#ecografia\\.doppler").addClass("card-outline-primary");
-	}
-});
-
 
 //modales para informe
 $( '#modalPreInfEcoPrimTrim' ).on( 'click', function() {
@@ -1922,8 +1266,8 @@ $("input[name='ajustarEcoPrimTrim']").on("change", function(){
 					FUM = new Date (FUM);
 					var B = new Date();
   					B.setTime(FUM.getTime() + diferencia);
-					$("#fum-tres").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-					$("#fum-tres").trigger("change");
+					$("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
+					$("#fum-dos").trigger("change");
 					$('#furAjustada').val($("input[name='fum']").val());
 					$('#egAjustada').val($("input[name='eg']").val());
 					$('#fppAjustada').val($("input[name='fpp']").val());
@@ -1940,8 +1284,8 @@ $("input[name='ajustarEcoPrimTrim']").on("change", function(){
 				FUM = new Date (FUM);
 				var B = new Date();
   				B.setTime(FUM.getTime() + diferencia);
-				$("#fum-tres").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-				$("#fum-tres").trigger("change");
+				$("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
+				$("#fum-dos").trigger("change");
 				$('#furAjustada').val($("input[name='fum']").val());
 				$('#egAjustada').val($("input[name='eg']").val());
 				$('#fppAjustada').val($("input[name='fpp']").val());
@@ -1989,8 +1333,8 @@ $("input[name='ajustarEcoSegTrim']").on("change", function(){
 					FUM = new Date (FUM);
 					var B = new Date();
   					B.setTime(FUM.getTime() + diferencia);
-					$("#fum-tres").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-					$("#fum-tres").trigger("change");
+					$("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
+					$("#fum-dos").trigger("change");
 					$('#furAjustada').val($("input[name='fum']").val());
 					$('#egAjustada').val($("input[name='eg']").val());
 					$('#fppAjustada').val($("input[name='fpp']").val());
@@ -2007,8 +1351,8 @@ $("input[name='ajustarEcoSegTrim']").on("change", function(){
 				FUM = new Date (FUM);
 				var B = new Date();
   				B.setTime(FUM.getTime() + diferencia);
-				$("#fum-tres").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
-				$("#fum-tres").trigger("change");
+				$("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear());
+				$("#fum-dos").trigger("change");
 				$('#furAjustada').val($("input[name='fum']").val());
 				$('#egAjustada').val($("input[name='eg']").val());
 				$('#fppAjustada').val($("input[name='fpp']").val());
@@ -2053,42 +1397,10 @@ function calcularEG(){
   else {
     $('#semanasEcoGen').val(Math.floor(EdadGestacional));
     $('#diasEcoGen').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7));
-    $('#semanasEcoObs').val(Math.floor(EdadGestacional));
-    $('#diasEcoObs').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7));
-    $('#semanasEcoDopp').val(Math.floor(EdadGestacional));
-    $('#diasEcoDopp').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7));
     EdadGestacional = Math.floor(EdadGestacional)+"."+Math.round((EdadGestacional - Math.floor(EdadGestacional))*7);
   }
  
   return EdadGestacional;
-}
-
-function calcularEdad(){
-	var fcumpleanos, Edad;
-	var d = new Date();
-	var undia = 1000 * 60 * 60 * 24;
- 	var unasemana = undia * 7;
-	var unano = undia * 365;
-	
-	fcumpleanos = new Date($("#fNacimiento").val());
-
-	Edad = ((d.getTime() - fcumpleanos.getTime()) / unano).toFixed(0);
-
-	return Edad;
-}
-
-function calcularEdadMaterna(){
-	var fcumpleanos, Edad;
-	var d = new Date();
-	var undia = 1000 * 60 * 60 * 24;
- 	var unasemana = undia * 7;
-	var unano = undia * 365;
-	
-	fcumpleanos = new Date($("#fechaMaterna").val().split(/\//).reverse().join('/'));
-
-	Edad = ((d.getTime() - fcumpleanos.getTime()) / unano).toFixed(0);
-
-	return Edad;
 }
 
 function deDBP() {
@@ -2460,7 +1772,6 @@ function pctlf() {
 			}
           $('#tallaPctRpt').val(pctTalla);
 	  $('#tallaRango').val(Pct10Talla[eg] + ' - ' + Pct90Talla[eg]);
-		 ipn()
 	 } 
  }
 };
@@ -2979,7 +2290,6 @@ function psohdlk() {
     $("#pfe").val(psoP.toFixed(0));
     pctpfe();
 	valccca()
-	 ipn()
   }
 }
 
@@ -3556,48 +2866,6 @@ function p50() {
      egbio = Math.floor(egbio / 7)+"."+ Math.floor(egbio - (Math.floor(egbio/7) *7));
      $('#egP50').val(egbio);
     }
-
-function ipn() {
-    var talla = $('#tallaFetal').val();
-    var peso = $('#pfe').val();
-
-    if (talla > 0) {
-        if (peso > 0) {
-            var IPN = peso / (Math.pow((talla * 10), 3));
-            IPN = IPN * 100000;
-           $('#ipn').val(IPN.toFixed(2));
-	   var Pct10IPN = [];
-	   var Pct90IPN = [];
-	   Pct10IPN[24] = 1.79;	   Pct10IPN[25] = 1.83;
-	   Pct10IPN[26] = 1.87;	   Pct10IPN[27] = 1.91;
-	   Pct10IPN[28] = 1.95;	   Pct10IPN[29] = 1.99;
-	   Pct10IPN[30] = 2.04;	   Pct10IPN[31] = 2.08;
-	   Pct10IPN[32] = 2.12;	   Pct10IPN[33] = 2.16;
-	   Pct10IPN[34] = 2.2;	   Pct10IPN[35] = 2.25;
-	   Pct10IPN[36] = 2.29;	   Pct10IPN[37] = 2.33;
-	   Pct10IPN[38] = 2.37;	   Pct10IPN[39] = 2.41;
-	   Pct10IPN[40] = 2.45;	   Pct10IPN[41] = 2.5;
-	   Pct10IPN[42] = 2.54;
-	   Pct90IPN[24] = 2.54;	   Pct90IPN[25] = 2.57;
-	   Pct90IPN[26] = 2.59;	   Pct90IPN[27] = 2.62;
-	   Pct90IPN[28] = 2.65;	   Pct90IPN[29] = 2.68;
-	   Pct90IPN[30] = 2.71;	   Pct90IPN[31] = 2.74;
-	   Pct90IPN[32] = 2.77;	   Pct90IPN[33] = 2.8;
-	   Pct90IPN[34] = 2.83;	   Pct90IPN[35] = 2.86;
-	   Pct90IPN[36] = 2.89;	   Pct90IPN[37] = 2.92;
-	   Pct90IPN[38] = 2.95;	   Pct90IPN[39] = 2.98;
-	   Pct90IPN[40] = 3.01;	   Pct90IPN[41] = 3.04;
-	   Pct90IPN[42] = 3.07;	
-	   var eg = parseFloat(localStorage.eg);
-           eg = parseInt(eg);
-           var uno=Pct90IPN[eg] - Pct10IPN[eg];
-           var dos=IPN - Pct10IPN[eg];
-
-           ajustarProgreso(parseInt(80 / (uno) * (dos) + 10), "IPNPct");
-
-        }
-    }
-}
 
 function valCC(dof,dbp){
     var delta = parseFloat(1.60);

@@ -18,23 +18,6 @@ function limitLines(obj, e) {
         }
       }
 
-var listPacientes = function(results){
-	var contenedor = $("#tablaPacientes");
-	contenedor.empty();
-	var html = '<table class="table table-bordered table-hover"><thead class="bg-primary text-white"><th>ID</th><th>Nombre</th><th>Apellido</th><th>Motivo</th><th>FUM </th><th>Ciudad </th></thead><tbody>';
-	if (results.rows.length==0){
-		html = "<div class='alert alert-primary' role='alert'>No hay pacientes su base de datos personal.</div>";
-	} else {
-		$.each(results.rows, function(rowIndex){
-			var row = results.rows.item(rowIndex);
-			html += '<tr onclick="aplication.editarPaciente('+ row.id +')"><td scope="row">';
-			html += row.user_id + '</td><td>' + row.user_name + '</td><td>' + row.user_lastname + '</td><td>' + row.careReason + '</td><td>' + row.fum + '</td><td>' + row.city + '</td><td><button type="button" class="btn btn-primary"  onclick="aplication.usarPaciente(' + row.id +')">exámen</button></td></tr>';
-		});
-		html += '</tbody></table>';
-	}
-	contenedor.html(html);
-};
-
 var listPaciente = function(results){
 	var row = results.rows.item(0);
 	$('#idPaciente').val(row.user_id);
@@ -46,7 +29,6 @@ var listPaciente = function(results){
 	$('#ciudad').val(row.city);
 	$('#telefono').val(row.phone);
 	$('#email').val(row.email);
-	$('#fNacimiento').val(row.birthdate);
 	$('#fum').val(row.fum);
 	$('#fum2').val(row.fum);
 	localStorage.fum = $('#fum').val();
@@ -83,7 +65,6 @@ $(document).ready(function(){
 		var day = ("0" + dayHoy.getDate()).slice(-2);
 		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
 
-		$('#fNacimiento').val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
@@ -187,7 +168,6 @@ $(document).ready(function(){
 		var day = ("0" + dayHoy.getDate()).slice(-2);
 		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
 
-		$('#fNacimiento').val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
@@ -202,7 +182,6 @@ $(document).ready(function(){
 		var day = ("0" + dayHoy.getDate()).slice(-2);
 		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
 
-		$('#fNacimiento').val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
@@ -292,7 +271,6 @@ $(document).ready(function(){
 		var day = ("0" + dayHoy.getDate()).slice(-2);
 		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
 
-		$('#fNacimiento').val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
 		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
@@ -730,24 +708,6 @@ $(document).ready(function(){
 		$('#lcn-informe').val($('#lcn').val());
 	});
 
- $( '#peso').on('change', function() {
-     $("#imc").val(aplication.imc($("#talla").val(), $(this).val()));
-     $("#estNutricional").val(aplication.estadoNutricional($("#imc").val()));
- });
-
- $( '#talla').on('change', function() {
-     $("#imc").val(aplication.imc($(this).val(), $("#peso").val()));
-     $("#estNutricional").val(aplication.estadoNutricional($("#imc").val()));
- });
-
- $( '#pesoMaterno').on('change', function() {
-     $("#imcMaterno").val(aplication.imc($("#tallaMaterna").val(), $(this).val()) + " kl/m2");
- });
-
- $( '#tallaMaterna').on('change', function() {
-     $("#imcMaterno").val(aplication.imc($(this).val(), $("#pesoMaterno").val()) + " kl/m2");
- });
-
 $( '.informacion').on('click', function() {
      $("#informacion").hide();
  });
@@ -985,7 +945,6 @@ $( document ).ready(function() {
         //cualEsMiIp();
         //cargarDatosGenerales();
         //activarTooltips();
-        //activarBotones();
 
 	if (isIE()){
 		console.log('navegador incompatible')
@@ -1017,55 +976,14 @@ $( document ).ready(function() {
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
-			$('#fum-tres').datepicker();
-			$('#fum-tres').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fum-cuatro').datepicker();
-			$('#fum-cuatro').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fum-cinco').datepicker();
-			$('#fum-cinco').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fum-seis').datepicker();
-			$('#fum-seis').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
 			
 			$('#fee-dos').datepicker();
 			$('#fee-dos').datepicker()
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
-			$('#fee-tres').datepicker();
-			$('#fee-tres').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fee-cuatro').datepicker();
-			$('#fee-cuatro').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fee-cinco').datepicker();
-			$('#fee-cinco').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
 			$('#fee-seis').datepicker();
 			$('#fee-seis').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fecha-consentimiento').datepicker();
-			$('#fechaMaterna').datepicker();
-			$('#fechaMaterna').datepicker()
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
@@ -1076,13 +994,7 @@ $( document ).ready(function() {
 						$('#continuarExamenEcografico').removeClass('d-none');
 					}
 				});
-				$("#pdfnacionalview").on("click", function(){
-					$("#pdfview").attr('src', "https://crecimientofetal.cl/pdf/gnacional.pdf");
-				});
 				
-				$("#pdfregionalview").on("click", function(){
-					$("#pdfview").attr('src', "https://crecimientofetal.cl/pdf/gregional.pdf");
-				});
 
 				$('#infadicionalSiController').on('click', function(){
 					$('#infadicionalView').removeClass('d-none');
