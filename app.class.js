@@ -49,6 +49,22 @@ class app {
 		}
 		else if (this.hash=="#tipoExamen"){
 			this.displayElement("tipoExamen");
+
+			let args = {
+				action: "new",
+				temporal_id: $("#id-paciente").val(),
+				temporal_name: $("#nombre-paciente").val(),
+				temporal_motivo: $("#motivo-examen").val(),
+				temporal_patologia: $("#patologiaObstetricaUno").val(),
+				temporal_profesional: $("#ecografista").val(),
+				temporal_edad: $("input[name='edad_materna']").val()
+			}
+	
+			$.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+				if (Object.keys(data).length > 0) {
+					let response = '';
+				}
+			});
 		}
 		else if (this.hash=="#ecoDoppler"){
 			this.displayElement("ecoDoppler");

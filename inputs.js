@@ -16,4 +16,21 @@ $( document ).ready(function() {
     for (i = 10; i < 51; i++) {
         $("select[name='edad_materna']").append('<option value="' + i +'">' + i + ' años</option>');
     }
+
+    $("#id-paciente").on("change", function(){
+        let args = {
+            action: "read"
+        }
+
+        $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+            if (Object.keys(data).length > 0) {
+                $("#id-paciente").val(data.temporal_id);
+                $("#nombre-paciente").val(data.temporal_name);
+                $("#motivo-examen").val(data.temporal_motivo);
+                $("#patologiaObstetricaUno").val(data.temporal_patologia);
+                $("#ecografista").val(data.temporal_profesional);
+                $("input[name='edad_materna']").val(data.temporal_edad);
+            }
+        });
+    })
 });
