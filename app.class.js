@@ -127,21 +127,28 @@ class app {
     }
 
     displayElement(div_id){
-	$('#consulta').hide();
-	$('#tipoExamen').hide();
-	$('#ecoObsPrimTrim').hide();
-	$('#ecoObsSegTrim').hide();
-	$('#ecoDoppler').hide();
-	if ($('#popupGenerico').is(':visible')){
-		$('#popupGenerico').modal('hide');
-	}
-	$('#tcal').css("visibility", "hidden");
-	$('#configuracion').hide();
-	$('#about').hide();
-	$('#home').hide();
-	$('#construccion').hide();
-	$('#ecoObsPrimTrimTrisomia').hide();
-	$('#'+div_id).show();
+		$('#consulta').hide();
+		$('#tipoExamen').hide();
+		$('#ecoObsPrimTrim').hide();
+		$('#ecoObsSegTrim').hide();
+		$('#ecoDoppler').hide();
+		if ($('#popupGenerico').is(':visible')){
+			$('#popupGenerico').modal('hide');
+		}
+		$('#tcal').css("visibility", "hidden");
+		$('#configuracion').hide();
+		$('#about').hide();
+		$('#home').hide();
+		$('#construccion').hide();
+		$('#ecoObsPrimTrimTrisomia').hide();
+		$('#'+div_id).show();
+
+		if (div_id != "home"){
+			$("#contenedor\\.eg").removeClass("d-none");
+		}
+		else{
+			$("#contenedor\\.eg").addClass("d-none");
+		}
     }
 	
    lastLoginDate(date){

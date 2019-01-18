@@ -18,24 +18,6 @@ function limitLines(obj, e) {
         }
       }
 
-var listPaciente = function(results){
-	var row = results.rows.item(0);
-	$('#idPaciente').val(row.user_id);
-	$('#nombre').val(row.user_name);
-	$('#apellido').val(row.user_lastname);
-	$('#motivo').val(row.careReason);
-	$('#ecografista').val(row.sonographer);
-	$('#lugarControl').val(row.controlPlace);
-	$('#ciudad').val(row.city);
-	$('#telefono').val(row.phone);
-	$('#email').val(row.email);
-	$('#fum').val(row.fum);
-	$('#fum2').val(row.fum);
-	localStorage.fum = $('#fum').val();
-	$('#fum').trigger( "change" );
-	$('#fum2').trigger( "change" );
-};
-
 $(document).ready(function(){
 	$("#eco\\.prim\\.trim\\.nuevo").on("click", function(){
 		$("#lcn").val("");

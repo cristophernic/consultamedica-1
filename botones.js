@@ -24,10 +24,6 @@ function activarBotones() {
    $("input[name='fum']").val(localStorage.fum);
    
    $("input[name='eg']").val(localStorage.eg);
-   
-   if (this.id != "fum-dos"){
-	   $('#fum-dos').datepicker('setValue', localStorage.fum);
-   }
 
 	 var semanas = Math.trunc(localStorage.eg)
 	 var dias =  Math.trunc((localStorage.eg - Math.trunc(localStorage.eg)) * 10)
