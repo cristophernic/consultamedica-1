@@ -31,6 +31,10 @@ $( document ).ready(function() {
                 $("#patologiaObstetricaUno").val(data.temporal_patologia);
                 $("#ecografista").val(data.temporal_profesional);
                 $("input[name='edad_materna']").val(data.temporal_edad);
+                $("#fum-dos").val(data.temporal_fur);
+				$("#semanasEcoGen").val(data.temporal_semanas);
+				$("#diasEcoGen").val(data.temporal_dias);
+				$("input[name='fpp']").val(data.temporal_fpp);
             }
             else{
                 $("#nombre-paciente").val("");
@@ -38,6 +42,8 @@ $( document ).ready(function() {
                 $("#patologiaObstetricaUno").val("");
                 $("#ecografista").val("");
                 $("input[name='edad_materna']").val("");
+                var B = new Date();;
+                $("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear()).trigger("change");
             }
         });
     })

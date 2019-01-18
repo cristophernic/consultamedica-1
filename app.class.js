@@ -57,7 +57,11 @@ class app {
 				temporal_motivo: $("#motivo-examen").val(),
 				temporal_patologia: $("#patologiaObstetricaUno").val(),
 				temporal_profesional: $("#ecografista").val(),
-				temporal_edad: $("input[name='edad_materna']").val()
+				temporal_edad: $("input[name='edad_materna']").val(),
+				temporal_fur: $("#fum-dos").val(),
+				temporal_semanas: $("#semanasEcoGen").val(),
+				temporal_dias: $("#diasEcoGen").val(),
+				temporal_fpp: $("input[name='fpp']").val()
 			}
 	
 			$.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
