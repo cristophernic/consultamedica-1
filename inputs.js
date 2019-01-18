@@ -19,7 +19,8 @@ $( document ).ready(function() {
 
     $("#id-paciente").on("change", function(){
         let args = {
-            action: "read"
+            action: "read",
+            temporal_id: $("#id-paciente").val()
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
