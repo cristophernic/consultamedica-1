@@ -45,7 +45,7 @@
             <div class="card-body">
                 <h5 class="card-title text-primary">Cálculo de edad gestacional</h5>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <label for="fum2">Fecha de última mestruación</label>
                     </div>
                     <div class="col-2">
@@ -64,20 +64,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <label for="dbp" class="col-form-label">Fecha probable de parto</label>
                     </div>
                     <div class="col-2">
                         <input type="text" class="form-control" name="fpp" readonly>
                     </div>
-                    <div class="col">
-                        <label for="fee" class="col-form-label">Fecha de examen (Modificable)</label>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="text" id="fee-dos" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -2647,6 +2640,13 @@
                             <label for="nacionalidadInput">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidadInput" aria-describedby="nacionalidadInputHelp">
                             <small id="nacionalidadInputHelp" class="form-text text-muted">nacionalidad.</small>
+                        </div>
+                        <!-- fecha de exámen-->
+                        <div class="col">
+                            <label for="fee" class="col-form-label">Fecha de examen (Modificable)</label>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" id="fee-dos" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
                         </div>
                     </div>
                 </div>
