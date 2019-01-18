@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <title>Crecimiento Fetal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="consulta.css">
     <link rel="stylesheet" href="datepicker.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" sizes="96x96" href="img/icon-96x96.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0275d8">
-    <!-- https://www.emailjs.com/ crecimientofetalcl@gmail.com-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="inputs.js"></script>
     <script src="funciones.js"></script>
@@ -25,33 +24,58 @@
     <script src="main.js"></script>
     <script src="bootstrap-datepicker.js"></script>
     <script src="select.js"></script>
-    <style>
-        .g-verde {
-            background-color:#009688;
-        }
-        .bg-gris {
-            background-color:#6c757d!important
-        }
-        body{
-            background-image:url('img/cream_pixels.png');
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded g-verde">
         <div class="container">
-        <div class="row w-100">
-            <div class="col-1">
-                <img class="img-fluid w-100" src="img/ic_launcher-web.png" alt="logo" style="max-width: 128px;">
-            </div>
-            <div class="col-11">
-                <p class="float-right" name="fechaHora" style="color: #f0df90;"></p>
-                <h5 class="text-white mt-0 mb-1"><em>CrecimientoFetal.cl</em></h5>
-                <p class="text-white"><em>Ultrasonografía obstétrica básica para profesionales</em></p>
+            <div class="row w-100">
+                <div class="col-1">
+                    <img class="img-fluid w-100" src="img/ic_launcher-web.png" alt="logo" style="max-width: 128px;">
+                </div>
+                <div class="col-11">
+                    <p class="float-right" name="fechaHora" style="color: #f0df90;"></p>
+                    <h5 class="text-white mt-0 mb-1"><em>CrecimientoFetal.cl</em></h5>
+                    <p class="text-white"><em>Ultrasonografía obstétrica básica para profesionales</em></p>
+                </div>
             </div>
         </div>
-    </div>
     </nav>
+    <h5 class="card-title text-primary">Cálculo de edad gestacional</h5>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label for="fum2">Fecha de última mestruación</label>
+                            </div>
+                            <div class="col-2">
+                                <input class="form-control" type="text" data-date-format="dd/mm/yyyy" data-weekStart="1" onfocus="blur();" name="fum" id="fum-dos">
+                            </div>
+                            <div class="col">
+                                <label for="dbp" class="col-form-label">Edad Gestacional</label>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                        <select id="semanasEcoGen" class="form-control"></select>
+                                    </div>
+                                    <div class="col">
+                                        <select id="diasEcoGen" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label for="dbp" class="col-form-label">Fecha probable de parto</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="text" class="form-control" name="fpp" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="fee" class="col-form-label">Fecha de examen (Modificable)</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="fee-dos" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
+                            </div>
+                        </div>
     <div class="container" id="about" style="display:none;">
         <ol class="breadcrumb">
             <li class="float-right"><a href="#inicio"><strong>Volver</strong></a></li>
@@ -188,43 +212,6 @@
             <div class="col-md-12">
                 <div class="card mb-3">
                     <div class="card-block">
-                        <h5 class="card-title text-primary">Cálculo de edad gestacional</h5>
-                        <div class="form-group row">
-                            <div class="col-4">
-                                <label for="fum2">Fecha de última mestruación</label>
-                            </div>
-                            <div class="col-2">
-                                <input class="form-control" type="text" data-date-format="dd/mm/yyyy" data-weekStart="1" onfocus="blur();" name="fum" id="fum-dos">
-                            </div>
-                            <div class="col">
-                                <label for="dbp" class="col-form-label">Edad Gestacional</label>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col">
-                                        <select id="semanasEcoGen" class="form-control"></select>
-                                    </div>
-                                    <div class="col">
-                                        <select id="diasEcoGen" class="form-control"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-4">
-                                <label for="dbp" class="col-form-label">Fecha probable de parto</label>
-                            </div>
-                            <div class="col-2">
-                                <input type="text" class="form-control" name="fpp" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="fee" class="col-form-label">Fecha de examen (Modificable)</label>
-                            </div>
-                            <div class="col">
-                                <input class="form-control" type="text" id="fee-dos" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
-                            </div>
-                        </div>
-                        <hr class="btn-consulta">
                         <div class="row">
                             <div class="col-12 mt-3">
                                 <p class="bg-faded p-2 text-left"><em>Cálculos  de edad gestacional y fecha probable de parto  (FPP) a partir de fecha referida por la paciente, o a la inversa , calculo de  FUM  y FPP a partir de la edad gestacional referida.  Para evaluación de exámenes anteriores el software dispone de la opción &laquo; fecha de examen modificable &raquo;</em></p>
