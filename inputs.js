@@ -33,7 +33,6 @@ $( document ).ready(function() {
                 $("input[name='edad_materna']").val(data.temporal_edad);
             }
             else{
-                $("#id-paciente").val("");
                 $("#nombre-paciente").val("");
                 $("#motivo-examen").val("");
                 $("#patologiaObstetricaUno").val("");
