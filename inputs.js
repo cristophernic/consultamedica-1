@@ -32,6 +32,14 @@ $( document ).ready(function() {
                 $("#ecografista").val(data.temporal_profesional);
                 $("input[name='edad_materna']").val(data.temporal_edad);
             }
+            else{
+                $("#id-paciente").val("");
+                $("#nombre-paciente").val("");
+                $("#motivo-examen").val("");
+                $("#patologiaObstetricaUno").val("");
+                $("#ecografista").val("");
+                $("input[name='edad_materna']").val("");
+            }
         });
     })
 });
