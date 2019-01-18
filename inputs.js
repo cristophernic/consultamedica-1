@@ -17,7 +17,7 @@ $( document ).ready(function() {
         $("select[name='edad_materna']").append('<option value="' + i +'">' + i + ' años</option>');
     }
 
-    $("#id-paciente").on("change", function(){
+    $("#id-paciente").on("keyup", function(event){
         let args = {
             action: "read",
             temporal_id: $("#id-paciente").val()
