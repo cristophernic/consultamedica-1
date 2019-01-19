@@ -50,7 +50,7 @@ $( document ).ready(function() {
 
     $("#boton\\.uno\\.guardar").on("click",function(){
         let args = {
-            action: "read",
+            action: "new",
             temporal_id: $("#id-paciente").val(),
             temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
             temptable_lcn: $("#lcn").val(),
