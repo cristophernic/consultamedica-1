@@ -78,6 +78,23 @@ class app {
 		}
 		else if (this.hash=="#ecoObsPrimTrim"){
 			this.displayElement("ecoObsPrimTrim");
+			let args = {
+				action: "get",
+				temporal_id: $("#id-paciente").val()
+			}
+	
+			$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+				$('#tabla\\.uno').empty();
+				if (Object.keys(data).length > 0) {
+					let response = '';
+					$.each(data, function(i,value){
+						response += '<tr>';
+						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_eg + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_saco + '</td>';
+						response += '</tr>';
+					});
+					$('#tabla\\.uno').append(response);
+				}
+			});
 		}
 		else if (this.hash=="#configuracion"){
 			this.displayElement("configuracion");

@@ -429,7 +429,7 @@
                                         </div>
                                         <div class="col-md-12 col-lg-3 mb-2">
                                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                <div class="input-group-addon">E.G. x LCN</div>
+                                                <div class="input-group-prepend"><div class="input-group-text">E.G. x LCN</div></div>
                                                 <input type="text" class="form-control" id="lcnPct" readonly>
                                             </div>
                                         </div>
@@ -449,7 +449,7 @@
                                         </div>
                                         <div class="col-md-12 col-lg-3 mb-2">
                                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                                <div class="input-group-addon">E.G. x Saco</div>
+                                                <div class="input-group-prepend"><div class="input-group-text">E.G. x Saco</div></div>
                                                 <input type="text" class="form-control" id="sacoPct" readonly>
                                             </div>
                                         </div>
@@ -531,6 +531,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">RUT</th>
+                                                <th scope="col">EG</th>
+                                                <th scope="col">lcn</th>
+                                                <th scope="col">saco</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla.uno">
+                                        </tbody>
+                                    </table>
                             </div>
                         </div>
                     </div>
@@ -771,6 +784,14 @@
                 </div>
             </div>
             <div class="col-3">
+                <h4 class="text-center">Información</h4>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="py-3 btn-group-vertical d-flex">
+                            <button class="btn btn-default text-white bg-gris" id="boton.uno.guardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
                 <h4 class="text-center">Ver Informe</h4>
                 <div class="card">
                     <div class="card-body">

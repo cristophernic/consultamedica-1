@@ -46,5 +46,35 @@ $( document ).ready(function() {
                 $("#fum-dos").val(B.getDate()+"/"+(B.getMonth()+1)+"/"+B.getFullYear()).trigger("change");
             }
         });
-    })
+    });
+
+    $("#boton\\.uno\\.guardar").on("click",function(){
+        let args = {
+            action: "read",
+            temporal_id: $("#id-paciente").val(),
+            temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+            temptable_lcn: $("#lcn").val(),
+            temptable_saco: $("#saco").val()
+        }
+
+        $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+            let args = {
+				action: "get",
+				temporal_id: $("#id-paciente").val()
+			}
+	
+			$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+				$('#tabla\\.uno').empty();
+				if (Object.keys(data).length > 0) {
+					let response = '';
+					$.each(data, function(i,value){
+						response += '<tr>';
+						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_eg + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_saco + '</td>';
+						response += '</tr>';
+					});
+					$('#tabla\\.uno').append(response);
+				}
+			});
+        });
+    });
 });
