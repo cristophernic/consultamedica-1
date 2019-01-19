@@ -69,7 +69,7 @@ $( document ).ready(function() {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr>';
-						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_eg + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_saco + '</td>';
+						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.uno').append(response);
