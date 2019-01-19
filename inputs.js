@@ -57,7 +57,7 @@ $( document ).ready(function() {
             temptable_saco: $("#saco").val()
         }
 
-        $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+        $.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
             let args = {
 				action: "get",
 				temporal_id: $("#id-paciente").val()
