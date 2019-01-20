@@ -87,6 +87,7 @@ $( document ).ready(function() {
     $("#boton\\.dos\\.guardar").on("click", function(){
 
         let args = {
+            action: "new",
             tempdostable_id: $("#id-paciente").val(),
             tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
             tempdostable_dbp: $("#dbp").val(),
