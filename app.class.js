@@ -75,6 +75,23 @@ class app {
 		}
 		else if (this.hash=="#ecoObsSegTrim"){
 			this.displayElement("ecoObsSegTrim");
+			let args = {
+				action: "get",
+				temporal_id: $("#id-paciente").val()
+			}
+
+			$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
+				$('#tabla\\.dos').empty();
+				if (Object.keys(data).length > 0) {
+					let response = '';
+					$.each(data, function(i,value){
+						response += '<tr>';
+						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
+						response += '</tr>';
+					});
+					$('#tabla\\.dos').append(response);
+				}
+			});
 		}
 		else if (this.hash=="#ecoObsPrimTrim"){
 			this.displayElement("ecoObsPrimTrim");
