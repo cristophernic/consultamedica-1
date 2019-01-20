@@ -104,7 +104,7 @@ $( document ).ready(function() {
             tempdostable_dorso: $("#dorso").val(),
             tempdostable_fcf: $("#fcf").val(),
             tempdostable_sexo: $("#ecografia\\.segtrim\\.sexo").val(),
-            tempdostable_morfo: $("#ev-morfo").val(),
+            tempdostable_morfo: $("#ev-morfo option:selected").val(),
             tempdostable_anatomia: $("#comentarios-anatomia-informe-eg-texto").val(),
             tempdostable_ubicacion: $("#ubicacion").val(),
             tempdostable_incersion: $("#incersion").val(),
