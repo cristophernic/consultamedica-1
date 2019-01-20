@@ -72,6 +72,23 @@ class app {
 		}
 		else if (this.hash=="#ecoDoppler"){
 			this.displayElement("ecoDoppler");
+			let args = {
+				action: "get",
+				temporal_id: $("#id-paciente").val()
+			}
+
+			$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+				$('#tabla\\.tres').empty();
+				if (Object.keys(data).length > 0) {
+					let response = '';
+					$.each(data, function(i,value){
+						response += '<tr>';
+						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
+						response += '</tr>';
+					});
+					$('#tabla\\.tres').append(response);
+				}
+			});
 		}
 		else if (this.hash=="#ecoObsSegTrim"){
 			this.displayElement("ecoObsSegTrim");

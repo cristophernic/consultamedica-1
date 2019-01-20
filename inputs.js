@@ -137,4 +137,41 @@ $( document ).ready(function() {
 			});
         });
     });
+
+    $("#boton\\.tres\\.guardar").on("click", function(){
+
+        let args = {
+            action: "new",
+            temptrestable_id: $("#id-paciente").val(),
+            temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+            temptrestable_utd: $("#aud").val(),
+            temptrestable_uti: $("#aui").val(), 
+            temptrestable_put: $("#auprom").val(), 
+            temptrestable_au: $("#ipau").val(), 
+            temptrestable_cm: $("#ipacm").val(),
+            temptrestable_cp: $("#ccp").val(),
+            temptrestable_dv: $("#dv").val(),
+            temptrestable_acm: $("#psmACM").val()
+        }
+
+        $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+            let args = {
+                action: "get",
+                temporal_id: $("#id-paciente").val()
+            }
+            
+            $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+                $('#tabla\\.tres').empty();
+                if (Object.keys(data).length > 0) {
+                    let response = '';
+                    $.each(data, function(i,value){
+                        response += '<tr>';
+                        response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
+                        response += '</tr>';
+                    });
+                    $('#tabla\\.tres').append(response);
+                }
+            });
+        });
+    });
 });
