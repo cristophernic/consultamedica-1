@@ -39,8 +39,6 @@ $(document).ready(function(){
 		}
 	});
 
-
-
 	$("#eco\\.prim\\.trim\\.nuevo").on("click", function(){
 		$("#lcn").val("");
 		$("#saco").val("");
