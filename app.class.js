@@ -23,7 +23,7 @@ var cacheApp ={
 	},
 	make: function(){
 		if (localStorage.getItem('wtmensages') === null){
-			localStorage.setItem('wtmensages', '{consulta:{primero:true, segundo:true}}');
+			localStorage.setItem('wtmensages', '{"consulta":{"primero":true, "segundo":true}}');
 			return true;
 		}
 		return false;
