@@ -188,28 +188,13 @@
                             <em>Cálculos  de edad gestacional y fecha probable de parto  (FPP) a partir de fecha referida por la paciente, o a la inversa , calculo de  FUM  y FPP a partir de la edad gestacional referida.  Para evaluación de exámenes anteriores el software dispone de la opción &laquo; fecha de examen modificable &raquo;</em>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-                        <h5 class="text-primary">Configuración del sistema y datos de la paciente</h5>
-                        <div class="d-flex flex-row justify-content-center">
-                            <p class="p-2">N° de Registro ( RUT / DNI )</p>
-                            <div class="p-2"><input type="text" class="form-control my-3" id="id-paciente"></div>
-                            <p class="p-2">Nombre paciente</p>
-                            <div class="p-2"><input class="form-control gris-claro" type="text" id="nombre-paciente" value="Paciente de Prueba"></div>
-                            <a class="btn btn-consulta" href="#tipoExamen" id="continuarExamenEcografico">Continuar a exámen ecográfico</a>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-9">
-                                <h6 class="card-title text-primary text-left mt-2 mb-4 ml-4"> - Configuración de datos para variable de uso  habitual (Opcional)</h6>
-                            </div>
-                            <div class="col-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-outline-consulta active" id="configNoController" data-value="0">
-                                        <input type="radio" value="0" autocomplete="off" checked> NO
-                                    </label>
-                                    <label class="btn btn-outline-consulta" id="configSiController" data-value="1">
-                                        <input type="radio" value="1" autocomplete="off"> SI
-                                    </label>
-                                </div>
-                            </div>
+                        <h5 class="text-primary">Datos de la paciente</h5>
+                        <div class="d-flex flex-row justify-content-center m-4">
+                            <p class="m-2">N° de Registro ( RUT / DNI )</p>
+                            <div><input type="text" class="form-control" id="id-paciente"></div>
+                            <p class="m-2">Nombre paciente</p>
+                            <div><input class="form-control gris-claro" type="text" id="nombre-paciente" value="Paciente de Prueba"></div>
+                            <a class="btn btn-consulta ml-2" href="#tipoExamen" id="continuarExamenEcografico">Continuar a exámen</a>
                         </div>
                         <div class="row mb-3">
                             <div class="col-9">
@@ -292,6 +277,22 @@
                         <div class="alert alert-light alert-dismissible fade show" role="alert">
                             <em>La información registrada solo será almacenada temporalmente, para reporte de informes y / o gráficas. El acopio de información en base de datos, requerirá acreditación previa del profesional y/o establecimiento, además consentimiento informado de la embarazada o su representante.</em>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <h5 class="text-primary">Configuración del sistema</h5>
+                        <div class="row mb-3">
+                            <div class="col-9">
+                                <h6 class="card-title text-primary text-left mt-2 mb-4 ml-4"> - Configuración de datos para variable de uso  habitual (Opcional)</h6>
+                            </div>
+                            <div class="col-3">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-consulta active" id="configNoController" data-value="0">
+                                        <input type="radio" value="0" autocomplete="off" checked> NO
+                                    </label>
+                                    <label class="btn btn-outline-consulta" id="configSiController" data-value="1">
+                                        <input type="radio" value="1" autocomplete="off"> SI
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -522,7 +523,7 @@
                                         </div>
                                     </div>
                                     <table class="table">
-                                        <thead>
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th scope="col">RUT</th>
                                                 <th scope="col">SACO</th>
@@ -1317,7 +1318,7 @@
                                         </div>
                                 </div>
                                 <table class="table">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th scope="col">RUT</th>
                                             <th scope="col">EG</th>
@@ -1968,7 +1969,7 @@
                             </div>
                         </div>
                         <table class="table">
-                                <thead>
+                                <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">RUT</th>
                                         <th scope="col">EG</th>
