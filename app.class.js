@@ -1,7 +1,44 @@
 //revisar https://gist.github.com/benpoole/1041277
 //http://programacion.net/articulo/introduccion_a_web_sql_1305
-//Agregar en la configuración: mebrete, Tipo de exámen ecográfico, 
+//Agregar en la configuración: mebrete, Tipo de exámen ecográfico,
 
+var cacheApp ={
+	get: function(element){
+		let data = localStorage.getItem(element);
+
+		if (data == null){
+			return {};
+		}
+		else{
+			return JSON.parse(localStorage.getItem(element));
+		}
+	},
+	set: function(key,element){
+		try {
+			localStorage.setItem(key,JSON.stringify(element));
+			return true;
+		} catch(e) {
+			return false;
+		}
+	},
+	make: function(){
+		if (localStorage.getItem('wtmensages') === null){
+			localStorage.setItem('wtmensages', '{consulta:{primero:true, segundo:true}}');
+			return true;
+		}
+		return false;
+	},
+	check: function(){
+		var test = 'test';
+		try {
+			localStorage.setItem(test, test);
+			localStorage.removeItem(test);
+			return true;
+		} catch(e) {
+			return false;
+		}
+	}
+}
 
 class app {
     constructor() {
@@ -17,13 +54,26 @@ class app {
     }
 
     run(){
-	this.day = new Date();
-	this.lastLoginDate(this.day);
-	this.lastLoginIP();
-	$('[data-toggle="tooltip"]').tooltip();
-	this.resetInputs()
-	this.displayElement("home");
-	document.location.hash = "#inicio";
+		this.day = new Date();
+		this.lastLoginDate(this.day);
+		this.lastLoginIP();
+		$('[data-toggle="tooltip"]').tooltip();
+		this.resetInputs()
+		this.displayElement("home");
+		document.location.hash = "#inicio";
+		if (cacheApp.check() === true){
+			if (cacheApp.make() === false){
+				let WT_mensajes = cacheApp.get("wtmensages");
+
+				if (WT_mensajes.consulta.primero === false){
+					$("#alerta\\.consulta\\.primero").alert('close');
+				}
+
+				if (WT_mensajes.consulta.segundo === false){
+					$("#alerta\\.consulta\\.segundo").alert('close');
+				}
+			}
+		}
     }
 
     onHashChange(){
@@ -252,5 +302,4 @@ class app {
 	$("#dv").val("").trigger("change");
 	$("#psmACM").val("").trigger("change");
   }
-
 }

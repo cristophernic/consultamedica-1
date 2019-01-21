@@ -19,6 +19,28 @@ function limitLines(obj, e) {
       }
 
 $(document).ready(function(){
+
+	$("#alerta\\.consulta\\.primero").on('closed.bs.alert', function () {
+		if (cacheApp.check() === true){
+			if (cacheApp.make() === false){
+				let WT_mensajes = cacheApp.get("wtmensages");
+				WT_mensajes.consulta.primero = false
+				cacheApp.set("wtmensages",WT_mensajes);
+			}
+		}
+	});
+	$("#alerta\\.consulta\\.segundo").on('closed.bs.alert', function () {
+		if (cacheApp.check() === true){
+			if (cacheApp.make() === false){
+				let WT_mensajes = cacheApp.get("wtmensages");
+				WT_mensajes.consulta.segundo = false;
+				cacheApp.set("wtmensages",WT_mensajes);
+			}
+		}
+	});
+
+
+
 	$("#eco\\.prim\\.trim\\.nuevo").on("click", function(){
 		$("#lcn").val("");
 		$("#saco").val("");
