@@ -133,7 +133,7 @@ class app {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr>';
-						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
+						response += '<td data-id="' + value.temptrestable_correlativo +'">' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.tres').append(response);
@@ -153,7 +153,7 @@ class app {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr>';
-						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
+						response += '<td data-id="' + value.tempdostable_correlativo +'">' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.dos').append(response);
@@ -172,12 +172,29 @@ class app {
 				if (Object.keys(data).length > 0) {
 					let response = '';
 					$.each(data, function(i,value){
-						response += '<tr>';
+						response += '<tr data-id="' + value.temptable_id +'">';
 						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.uno').append(response);
 				}
+
+				$('#tabla\\.uno > tr').on("click", function(){
+					let id = $(this).data("id");
+					let args = {
+						action: "getOne",
+						temporal_id: $("#id-paciente").val(),
+						temptable: id
+					}
+
+					$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+						let eg = data.temptable_eg.split(",");
+						$("#semanasEcoGen").val(eg[0]);
+						$("#diasEcoGen").val(eg[0]);
+						$("#lcn").val(data.temptable_lcn);
+						$("#saco").val(data.temptable_saco);
+					});
+				});
 			});
 		}
 		else if (this.hash=="#configuracion"){
