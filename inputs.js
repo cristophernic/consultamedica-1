@@ -86,7 +86,7 @@ $( document ).ready(function() {
 					let args = {
 						action: "getOne",
 						temporal_id: $("#id-paciente").val(),
-						temptable: id
+						temptable_id: id
 					}
 
 					$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
