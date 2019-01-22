@@ -242,7 +242,7 @@ class app {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr data-id="' + value.temptable_id +'">';
-						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td>';
+						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.uno').append(response);
@@ -263,6 +263,11 @@ class app {
 							$("#saco").val(data.temptable_saco);
 							$("#boton\\.uno\\.guardar").data("id",id);
 						});
+					});
+
+					$(".primer-eliminar").on("click", function(event){
+						event.stopPropagation();
+						alert("eliminar "  + $(this).parent().data("id"));
 					});
 				}
 			});
