@@ -120,36 +120,73 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.dos\\.guardar").on("click", function(){
+        let id = $("#boton\\.uno\\.guardar").data("id");
+        let args = "";
 
-        let args = {
-            action: "new",
-            tempdostable_id: $("#id-paciente").val(),
-            tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-            tempdostable_dbp: $("#dbp").val(),
-            tempdostable_dof: $("#dof").val(), 
-            tempdostable_cc: $("#cc").val(), 
-            tempdostable_ca: $("#ca").val(), 
-            tempdostable_lf: $("#lf").val(),
-            tempdostable_bvm: $("#bvm").val(),
-            tempdostable_lh: $("#lh").val(),
-            tempdostable_cerebelo: $("#cerebelo").val(),
-            tempdostable_pfe: $("#pfe").val(),
-            tempdostable_egP50: $("#egP50").val(),
-            tempdostable_presentacion: $("#presentacion").val(),
-            tempdostable_dorso: $("#dorso").val(),
-            tempdostable_fcf: $("#fcf").val(),
-            tempdostable_sexo: $("#ecografia\\.segtrim\\.sexo").val(),
-            tempdostable_morfo: $("#ev-morfo option:selected").val(),
-            tempdostable_anatomia: $("#comentarios-anatomia-informe-eg-texto").val(),
-            tempdostable_ubicacion: $("#ubicacion").val(),
-            tempdostable_incersion: $("#incersion").val(),
-            tempdostable_grado: $("#grado-placenta").val(),
-            tempdostable_liq: $("#liq-cualitativo-eco").val(),
-            tempdostable_bvmEcoDos: $("#bvmEcoDos").val(),
-            tempdostable_cordon: $("#cordon").val(),
-            tempdostable_vasos: $("#vasos").val(),
-            tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
-            tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val()
+        if (id == 0){
+            args = {
+                action: "new",
+                tempdostable_id: $("#id-paciente").val(),
+                tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                tempdostable_dbp: $("#dbp").val(),
+                tempdostable_dof: $("#dof").val(), 
+                tempdostable_cc: $("#cc").val(), 
+                tempdostable_ca: $("#ca").val(), 
+                tempdostable_lf: $("#lf").val(),
+                tempdostable_bvm: $("#bvm").val(),
+                tempdostable_lh: $("#lh").val(),
+                tempdostable_cerebelo: $("#cerebelo").val(),
+                tempdostable_pfe: $("#pfe").val(),
+                tempdostable_egP50: $("#egP50").val(),
+                tempdostable_presentacion: $("#presentacion").val(),
+                tempdostable_dorso: $("#dorso").val(),
+                tempdostable_fcf: $("#fcf").val(),
+                tempdostable_sexo: $("#ecografia\\.segtrim\\.sexo").val(),
+                tempdostable_morfo: $("#ev-morfo option:selected").val(),
+                tempdostable_anatomia: $("#comentarios-anatomia-informe-eg-texto").val(),
+                tempdostable_ubicacion: $("#ubicacion").val(),
+                tempdostable_incersion: $("#incersion").val(),
+                tempdostable_grado: $("#grado-placenta").val(),
+                tempdostable_liq: $("#liq-cualitativo-eco").val(),
+                tempdostable_bvmEcoDos: $("#bvmEcoDos").val(),
+                tempdostable_cordon: $("#cordon").val(),
+                tempdostable_vasos: $("#vasos").val(),
+                tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
+                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val()
+            }
+        }
+        else{
+            args = {
+                action: "set",
+                tempdostable_correlativo: id,
+                tempdostable_id: $("#id-paciente").val(),
+                tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                tempdostable_dbp: $("#dbp").val(),
+                tempdostable_dof: $("#dof").val(), 
+                tempdostable_cc: $("#cc").val(), 
+                tempdostable_ca: $("#ca").val(), 
+                tempdostable_lf: $("#lf").val(),
+                tempdostable_bvm: $("#bvm").val(),
+                tempdostable_lh: $("#lh").val(),
+                tempdostable_cerebelo: $("#cerebelo").val(),
+                tempdostable_pfe: $("#pfe").val(),
+                tempdostable_egP50: $("#egP50").val(),
+                tempdostable_presentacion: $("#presentacion").val(),
+                tempdostable_dorso: $("#dorso").val(),
+                tempdostable_fcf: $("#fcf").val(),
+                tempdostable_sexo: $("#ecografia\\.segtrim\\.sexo").val(),
+                tempdostable_morfo: $("#ev-morfo option:selected").val(),
+                tempdostable_anatomia: $("#comentarios-anatomia-informe-eg-texto").val(),
+                tempdostable_ubicacion: $("#ubicacion").val(),
+                tempdostable_incersion: $("#incersion").val(),
+                tempdostable_grado: $("#grado-placenta").val(),
+                tempdostable_liq: $("#liq-cualitativo-eco").val(),
+                tempdostable_bvmEcoDos: $("#bvmEcoDos").val(),
+                tempdostable_cordon: $("#cordon").val(),
+                tempdostable_vasos: $("#vasos").val(),
+                tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
+                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val()
+            }
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
@@ -159,16 +196,58 @@ $( document ).ready(function() {
 			}
 
 			$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
-				$('#tabla\\.dos').empty();
+                $('#tabla\\.dos').empty();
+                $("#boton\\.dos\\.guardar").data("id",0);
 				if (Object.keys(data).length > 0) {
 					let response = '';
 					$.each(data, function(i,value){
-						response += '<tr>';
+						response += '<tr data-id="' + value.tempdostable_correlativo +'">';
 						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
 						response += '</tr>';
 					});
-					$('#tabla\\.dos').append(response);
-				}
+                    $('#tabla\\.dos').append(response);
+                    
+                    $('#tabla\\.uno > tr').on("click", function(){
+						let id = $(this).data("id");
+						let args = {
+							action: "getOne",
+							temporal_id: $("#id-paciente").val(),
+							tempdostable_id: id
+						}
+
+						$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
+							let eg = data.tempdostable_eg.split(",");
+							$("#semanasEcoGen").val(eg[0]);
+							$("#diasEcoGen").val(eg[0]);
+							$("#dbp").val(data.tempdostable_dbp);
+							$("#dof").val(data.tempdostable_dof); 
+							$("#cc").val(data.tempdostable_cc);
+							$("#ca").val(data.tempdostable_ca); 
+							$("#lf").val(data.tempdostable_lf);
+							$("#bvm").val(data.tempdostable_bvm);
+							$("#lh").val(data.tempdostable_lh);
+							$("#cerebelo").val(data.tempdostable_cerebelo);
+							$("#pfe").val(data.tempdostable_pfe);
+							$("#egP50").val(data.tempdostable_egP50);
+							$("#presentacion").val(data.tempdostable_presentacion);
+							$("#dorso").val(data.tempdostable_dorso);
+							$("#fcf").val(data.tempdostable_fcf);
+							$("#ecografia\\.segtrim\\.sexo").val(data.tempdostable_sexo);
+							$("#ev-morfo option:selected").val(data.tempdostable_morfo);
+							$("#comentarios-anatomia-informe-eg-texto").val(data.tempdostable_anatomia);
+							$("#ubicacion").val(data.tempdostable_ubicacion);
+							$("#incersion").val(data.tempdostable_incersion);
+							$("#grado-placenta").val(data.tempdostable_grado);
+							$("#liq-cualitativo-eco").val(data.tempdostable_liq);
+							$("#bvmEcoDos").val(data.tempdostable_bvmEcoDos);
+							$("#cordon").val(data.tempdostable_cordon);
+							$("#vasos").val(data.tempdostable_vasos);
+							$("#eco\\.seg\\.trim\\.select\\.comentario").val(data.tempdostable_comentario);
+							$("#comentarios-eco-dos-inf-dos").val(data.tempdostable_comentarios);
+							$("#boton\\.dos\\.guardar").data("id",id);
+						});
+					});
+                }
 			});
         });
     });
