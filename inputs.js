@@ -202,12 +202,12 @@ $( document ).ready(function() {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr data-id="' + value.tempdostable_correlativo +'">';
-						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
+						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
 						response += '</tr>';
 					});
                     $('#tabla\\.dos').append(response);
                     
-                    $('#tabla\\.uno > tr').on("click", function(){
+                    $('#tabla\\.dos > tr').on("click", function(){
 						let id = $(this).data("id");
 						let args = {
 							action: "getOne",
