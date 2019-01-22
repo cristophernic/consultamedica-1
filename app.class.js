@@ -134,7 +134,7 @@ class app {
 					let response = '';
 					$.each(data, function(i,value){
 						response += '<tr data-id="' + value.temptrestable_correlativo +'">';
-						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
+						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.temptrestable_cp + '</td><td>' + value.temptrestable_dv + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.tres').append(response);
