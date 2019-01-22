@@ -273,7 +273,7 @@ $( document ).ready(function() {
         else{
             args = {
                 action: "set",
-                tempdostable_correlativo: id,
+                temptrestable_correlativo: id,
                 temptrestable_id: $("#id-paciente").val(),
                 temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptrestable_utd: $("#aud").val(),
