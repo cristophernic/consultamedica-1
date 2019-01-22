@@ -120,7 +120,7 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.dos\\.guardar").on("click", function(){
-        let id = $("#boton\\.uno\\.guardar").data("id");
+        let id = $("#boton\\.dos\\.guardar").data("id");
         let args = "";
 
         if (id == 0){
@@ -253,19 +253,39 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.tres\\.guardar").on("click", function(){
+        let id = $("#boton\\.tres\\.guardar").data("id");
+        let args = "";
 
-        let args = {
-            action: "new",
-            temptrestable_id: $("#id-paciente").val(),
-            temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-            temptrestable_utd: $("#aud").val(),
-            temptrestable_uti: $("#aui").val(), 
-            temptrestable_put: $("#auprom").val(), 
-            temptrestable_au: $("#ipau").val(), 
-            temptrestable_cm: $("#ipacm").val(),
-            temptrestable_cp: $("#ccp").val(),
-            temptrestable_dv: $("#dv").val(),
-            temptrestable_acm: $("#psmACM").val()
+        if (id == 0){
+            args = {
+                action: "new",
+                temptrestable_id: $("#id-paciente").val(),
+                temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptrestable_utd: $("#aud").val(),
+                temptrestable_uti: $("#aui").val(), 
+                temptrestable_put: $("#auprom").val(), 
+                temptrestable_au: $("#ipau").val(), 
+                temptrestable_cm: $("#ipacm").val(),
+                temptrestable_cp: $("#ccp").val(),
+                temptrestable_dv: $("#dv").val(),
+                temptrestable_acm: $("#psmACM").val()
+            }
+        }
+        else{
+            args = {
+                action: "set",
+                tempdostable_correlativo: id,
+                temptrestable_id: $("#id-paciente").val(),
+                temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptrestable_utd: $("#aud").val(),
+                temptrestable_uti: $("#aui").val(), 
+                temptrestable_put: $("#auprom").val(), 
+                temptrestable_au: $("#ipau").val(), 
+                temptrestable_cm: $("#ipacm").val(),
+                temptrestable_cp: $("#ccp").val(),
+                temptrestable_dv: $("#dv").val(),
+                temptrestable_acm: $("#psmACM").val()
+            }  
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
@@ -276,14 +296,39 @@ $( document ).ready(function() {
             
             $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
                 $('#tabla\\.tres').empty();
+                $("#boton\\.tres\\.guardar").data("id",0);
                 if (Object.keys(data).length > 0) {
                     let response = '';
                     $.each(data, function(i,value){
-                        response += '<tr>';
+                        response += '<tr data-id="' + value.temptrestable_correlativo +'">';
                         response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
                         response += '</tr>';
                     });
                     $('#tabla\\.tres').append(response);
+
+                    $('#tabla\\.tres > tr').on("click", function(){
+						let id = $(this).data("id");
+						let args = {
+							action: "getOne",
+							temporal_id: $("#id-paciente").val(),
+							temptrestable_correlativo: id
+						}
+
+						$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+							let eg = data.temptrestable_eg.split(",");
+							$("#semanasEcoGen").val(eg[0]);
+                            $("#diasEcoGen").val(eg[0]);
+                            $("#aud").val(data.temptrestable_utd);
+                            $("#aui").val(data.temptrestable_uti); 
+                            $("#auprom").val(data.temptrestable_put); 
+                            $("#ipau").val(data.temptrestable_au);
+                            $("#ipacm").val(data.temptrestable_cm);
+                            $("#ccp").val(data.temptrestable_cp);
+                            $("#dv").val(data.temptrestable_dv);
+                            $("#psmACM").val(data.temptrestable_acm);
+							$("#boton\\.tres\\.guardar").data("id",id);
+						});
+					});
                 }
             });
         });

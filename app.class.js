@@ -129,14 +129,39 @@ class app {
 
 			$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
 				$('#tabla\\.tres').empty();
+				$("#boton\\.tres\\.guardar").data("id",0);
 				if (Object.keys(data).length > 0) {
 					let response = '';
 					$.each(data, function(i,value){
-						response += '<tr>';
-						response += '<td data-id="' + value.temptrestable_correlativo +'">' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
+						response += '<tr data-id="' + value.temptrestable_correlativo +'">';
+						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.tempdostable_cp + '</td><td>' + value.tempdostable_dv + '</td>';
 						response += '</tr>';
 					});
 					$('#tabla\\.tres').append(response);
+
+					$('#tabla\\.tres > tr').on("click", function(){
+						let id = $(this).data("id");
+						let args = {
+							action: "getOne",
+							temporal_id: $("#id-paciente").val(),
+							temptrestable_correlativo: id
+						}
+
+						$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+							let eg = data.temptrestable_eg.split(",");
+							$("#semanasEcoGen").val(eg[0]);
+                            $("#diasEcoGen").val(eg[0]);
+                            $("#aud").val(data.temptrestable_utd);
+                            $("#aui").val(data.temptrestable_uti); 
+                            $("#auprom").val(data.temptrestable_put); 
+                            $("#ipau").val(data.temptrestable_au);
+                            $("#ipacm").val(data.temptrestable_cm);
+                            $("#ccp").val(data.temptrestable_cp);
+                            $("#dv").val(data.temptrestable_dv);
+                            $("#psmACM").val(data.temptrestable_acm);
+							$("#boton\\.tres\\.guardar").data("id",id);
+						});
+					});
 				}
 			});
 		}
