@@ -31,7 +31,6 @@ $( document ).ready(function() {
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
             if (Object.keys(data).length > 0) {
-                $("#id-paciente").val(data.temporal_id);
                 $("#nombre-paciente").val(data.temporal_name);
                 $("#motivo-examen").val(data.temporal_motivo);
                 $("#patologiaObstetricaUno").val(data.temporal_patologia);
