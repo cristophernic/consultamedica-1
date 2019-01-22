@@ -165,7 +165,7 @@ class app {
 						let args = {
 							action: "getOne",
 							temporal_id: $("#id-paciente").val(),
-							tempdostable_id: id
+							tempdostable_correlativo: id
 						}
 
 						$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
