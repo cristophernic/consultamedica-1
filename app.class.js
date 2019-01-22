@@ -267,7 +267,50 @@ class app {
 
 					$(".primer-eliminar").on("click", function(event){
 						event.stopPropagation();
-						alert("eliminar "  + $(this).parent().data("id"));
+						let args = {
+							action: "del",
+							temporal_id: $("#id-paciente").val(),
+							temptable_id: $(this).parent().parent().data("id")
+						}
+
+						$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+							let args = {
+								action: "get",
+								temporal_id: $("#id-paciente").val()
+							}
+
+							$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+								$('#tabla\\.uno').empty();
+								$("#boton\\.uno\\.guardar").data("id",0);
+								if (Object.keys(data).length > 0) {
+									let response = '';
+									$.each(data, function(i,value){
+										response += '<tr data-id="' + value.temptable_id +'">';
+										response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
+										response += '</tr>';
+									});
+									$('#tabla\\.uno').append(response);
+
+									$('#tabla\\.uno > tr').on("click", function(){
+										let id = $(this).data("id");
+										let args = {
+											action: "getOne",
+											temporal_id: $("#id-paciente").val(),
+											temptable_id: id
+										}
+					
+										$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+											let eg = data.temptable_eg.split(",");
+											$("#semanasEcoGen").val(eg[0]);
+											$("#diasEcoGen").val(eg[1]);
+											$("#lcn").val(data.temptable_lcn);
+											$("#saco").val(data.temptable_saco);
+											$("#boton\\.uno\\.guardar").data("id",id);
+										});
+									});
+								}
+							});
+						});
 					});
 				}
 			});
