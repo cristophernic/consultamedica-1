@@ -55,12 +55,27 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.uno\\.guardar").on("click",function(){
-        let args = {
-            action: "new",
-            temporal_id: $("#id-paciente").val(),
-            temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-            temptable_lcn: $("#lcn").val(),
-            temptable_saco: $("#saco").val()
+        let id = $("#boton\\.uno\\.guardar").data("id");
+        let args = "";
+
+        if (id == 0){
+            args = {
+                action: "new",
+                temporal_id: $("#id-paciente").val(),
+                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptable_lcn: $("#lcn").val(),
+                temptable_saco: $("#saco").val()
+            }
+        }
+        else{
+            args = {
+                action: "set",
+                temporal_id: $("#id-paciente").val(),
+                temptable_id: id,
+                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptable_lcn: $("#lcn").val(),
+                temptable_saco: $("#saco").val()
+            }
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
@@ -68,9 +83,11 @@ $( document ).ready(function() {
 				action: "get",
 				temporal_id: $("#id-paciente").val()
 			}
-	
+    
+            
 			$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-				$('#tabla\\.uno').empty();
+                $('#tabla\\.uno').empty();
+                $("#boton\\.uno\\.guardar").data("id",0);
 				if (Object.keys(data).length > 0) {
 					let response = '';
 					$.each(data, function(i,value){
@@ -94,7 +111,8 @@ $( document ).ready(function() {
 						$("#semanasEcoGen").val(eg[0]);
 						$("#diasEcoGen").val(eg[0]);
 						$("#lcn").val(data.temptable_lcn);
-						$("#saco").val(data.temptable_saco);
+                        $("#saco").val(data.temptable_saco);
+                        $("#boton\\.uno\\.guardar").data("id",id);
 					});
 				})
 			});

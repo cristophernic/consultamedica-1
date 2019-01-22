@@ -169,6 +169,7 @@ class app {
 	
 			$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
 				$('#tabla\\.uno').empty();
+				$("#boton\\.uno\\.guardar").data("id",0);
 				if (Object.keys(data).length > 0) {
 					let response = '';
 					$.each(data, function(i,value){
@@ -193,6 +194,7 @@ class app {
 						$("#diasEcoGen").val(eg[0]);
 						$("#lcn").val(data.temptable_lcn);
 						$("#saco").val(data.temptable_saco);
+						$("#boton\\.uno\\.guardar").data("id",id);
 					});
 				});
 			});
