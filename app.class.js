@@ -150,7 +150,7 @@ class app {
 						$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
 							let eg = data.temptrestable_eg.split(",");
 							$("#semanasEcoGen").val(eg[0]);
-                            $("#diasEcoGen").val(eg[0]);
+                            $("#diasEcoGen").val(eg[1]);
                             $("#aud").val(data.temptrestable_utd);
                             $("#aui").val(data.temptrestable_uti); 
                             $("#auprom").val(data.temptrestable_put); 
@@ -196,7 +196,7 @@ class app {
 						$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
 							let eg = data.tempdostable_eg.split(",");
 							$("#semanasEcoGen").val(eg[0]);
-							$("#diasEcoGen").val(eg[0]);
+							$("#diasEcoGen").val(eg[1]);
 							$("#dbp").val(data.tempdostable_dbp);
 							$("#dof").val(data.tempdostable_dof); 
 							$("#cc").val(data.tempdostable_cc);
@@ -258,7 +258,7 @@ class app {
 						$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
 							let eg = data.temptable_eg.split(",");
 							$("#semanasEcoGen").val(eg[0]);
-							$("#diasEcoGen").val(eg[0]);
+							$("#diasEcoGen").val(eg[1]);
 							$("#lcn").val(data.temptable_lcn);
 							$("#saco").val(data.temptable_saco);
 							$("#boton\\.uno\\.guardar").data("id",id);
