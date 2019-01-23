@@ -197,4 +197,29 @@ $( document ).ready(function() {
             app.loadDoppler();
         });
     });
+
+    $("#link\\.go\\.pacientes").on("click", function(){
+        $("#graficosTitle").html("Pacientes");
+        let args = {
+            action: "get"
+        }
+
+        $.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+            if (Object.keys(data).length > 0) {
+                let response ="";
+                $.each(data, function(i,value){
+                    response += '<tr><td>' + value.temporal_id + '</td><td>' + value.temporal_name + '</td><td>' + value.temporal_edad + '</td><td>' + value.temporal_fur + '</td><td>' + value.temporal_semanas +'.'+ value.temporal_dias +'</td><td>' + value.temporal_fpp + '</td>';
+                    response += '</tr>';
+                });
+                $("#graficosBody").html('<table class="table"><thead class="thead-dark"><tr><th scope="col">RUT</th><th scope="col">Nombre</th><th scope="col">Edad</th><th scope="col">FUM</th><th scope="col">Edad Gestacional</th><th scope="col">FPP</th></tr></thead><tbody id="tabla.pacientes"></tbody></table>');
+                $("#tabla\\.pacientes").html(response);
+
+                $("#popupGraficos").modal("show");
+            }
+            else{
+                $("#graficosBody").html("");
+            }
+        });
+    });
+
 });
