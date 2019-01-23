@@ -122,198 +122,15 @@ class app {
 		}
 		else if (this.hash=="#ecoDoppler"){
 			this.displayElement("ecoDoppler");
-			let args = {
-				action: "get",
-				temporal_id: $("#id-paciente").val()
-			}
-
-			$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
-				$('#tabla\\.tres').empty();
-				$("#boton\\.tres\\.guardar").data("id",0);
-				if (Object.keys(data).length > 0) {
-					let response = '';
-					$.each(data, function(i,value){
-						response += '<tr data-id="' + value.temptrestable_correlativo +'">';
-						response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.temptrestable_cp + '</td><td>' + value.temptrestable_dv + '</td>';
-						response += '</tr>';
-					});
-					$('#tabla\\.tres').append(response);
-
-					$('#tabla\\.tres > tr').on("click", function(){
-						let id = $(this).data("id");
-						let args = {
-							action: "getOne",
-							temporal_id: $("#id-paciente").val(),
-							temptrestable_correlativo: id
-						}
-
-						$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
-							let eg = data.temptrestable_eg.split(",");
-							$("#semanasEcoGen").val(eg[0]);
-                            $("#diasEcoGen").val(eg[1]);
-                            $("#aud").val(data.temptrestable_utd);
-                            $("#aui").val(data.temptrestable_uti); 
-                            $("#auprom").val(data.temptrestable_put); 
-                            $("#ipau").val(data.temptrestable_au);
-                            $("#ipacm").val(data.temptrestable_cm);
-                            $("#ccp").val(data.temptrestable_cp);
-                            $("#dv").val(data.temptrestable_dv);
-                            $("#psmACM").val(data.temptrestable_acm);
-							$("#boton\\.tres\\.guardar").data("id",id);
-						});
-					});
-				}
-			});
+			this.loadDoppler();
 		}
 		else if (this.hash=="#ecoObsSegTrim"){
 			this.displayElement("ecoObsSegTrim");
-			let args = {
-				action: "get",
-				temporal_id: $("#id-paciente").val()
-			}
-
-			$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
-				$('#tabla\\.dos').empty();
-				$("#boton\\.dos\\.guardar").data("id",0);
-
-				if (Object.keys(data).length > 0) {
-					let response = '';
-					$.each(data, function(i,value){
-						response += '<tr data-id="' + value.tempdostable_correlativo +'">';
-						response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td>';
-						response += '</tr>';
-					});
-					$('#tabla\\.dos').append(response);
-
-					$('#tabla\\.dos > tr').on("click", function(){
-						let id = $(this).data("id");
-						let args = {
-							action: "getOne",
-							temporal_id: $("#id-paciente").val(),
-							tempdostable_correlativo: id
-						}
-
-						$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
-							let eg = data.tempdostable_eg.split(",");
-							$("#semanasEcoGen").val(eg[0]);
-							$("#diasEcoGen").val(eg[1]);
-							$("#dbp").val(data.tempdostable_dbp);
-							$("#dof").val(data.tempdostable_dof); 
-							$("#cc").val(data.tempdostable_cc);
-							$("#ca").val(data.tempdostable_ca); 
-							$("#lf").val(data.tempdostable_lf);
-							$("#bvm").val(data.tempdostable_bvm);
-							$("#lh").val(data.tempdostable_lh);
-							$("#cerebelo").val(data.tempdostable_cerebelo);
-							$("#pfe").val(data.tempdostable_pfe);
-							$("#egP50").val(data.tempdostable_egP50);
-							$("#presentacion").val(data.tempdostable_presentacion);
-							$("#dorso").val(data.tempdostable_dorso);
-							$("#fcf").val(data.tempdostable_fcf);
-							$("#ecografia\\.segtrim\\.sexo").val(data.tempdostable_sexo);
-							$("#ev-morfo option:selected").val(data.tempdostable_morfo);
-							$("#comentarios-anatomia-informe-eg-texto").val(data.tempdostable_anatomia);
-							$("#ubicacion").val(data.tempdostable_ubicacion);
-							$("#incersion").val(data.tempdostable_incersion);
-							$("#grado-placenta").val(data.tempdostable_grado);
-							$("#liq-cualitativo-eco").val(data.tempdostable_liq);
-							$("#bvmEcoDos").val(data.tempdostable_bvmEcoDos);
-							$("#cordon").val(data.tempdostable_cordon);
-							$("#vasos").val(data.tempdostable_vasos);
-							$("#eco\\.seg\\.trim\\.select\\.comentario").val(data.tempdostable_comentario);
-							$("#comentarios-eco-dos-inf-dos").val(data.tempdostable_comentarios);
-							$("#boton\\.dos\\.guardar").data("id",id);
-						});
-					});
-				}
-			});
+			this.loadSegtrim();
 		}
 		else if (this.hash=="#ecoObsPrimTrim"){
 			this.displayElement("ecoObsPrimTrim");
-			let args = {
-				action: "get",
-				temporal_id: $("#id-paciente").val()
-			}
-	
-			$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-				$('#tabla\\.uno').empty();
-				$("#boton\\.uno\\.guardar").data("id",0);
-				if (Object.keys(data).length > 0) {
-					let response = '';
-					$.each(data, function(i,value){
-						response += '<tr data-id="' + value.temptable_id +'">';
-						response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
-						response += '</tr>';
-					});
-					$('#tabla\\.uno').append(response);
-
-					$('#tabla\\.uno > tr').on("click", function(){
-						let id = $(this).data("id");
-						let args = {
-							action: "getOne",
-							temporal_id: $("#id-paciente").val(),
-							temptable_id: id
-						}
-	
-						$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-							let eg = data.temptable_eg.split(",");
-							$("#semanasEcoGen").val(eg[0]);
-							$("#diasEcoGen").val(eg[1]);
-							$("#lcn").val(data.temptable_lcn);
-							$("#saco").val(data.temptable_saco);
-							$("#boton\\.uno\\.guardar").data("id",id);
-						});
-					});
-
-					$(".primer-eliminar").on("click", function(event){
-						event.stopPropagation();
-						let args = {
-							action: "del",
-							temporal_id: $("#id-paciente").val(),
-							temptable_id: $(this).parent().parent().data("id")
-						}
-
-						$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-							let args = {
-								action: "get",
-								temporal_id: $("#id-paciente").val()
-							}
-
-							$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-								$('#tabla\\.uno').empty();
-								$("#boton\\.uno\\.guardar").data("id",0);
-								if (Object.keys(data).length > 0) {
-									let response = '';
-									$.each(data, function(i,value){
-										response += '<tr data-id="' + value.temptable_id +'">';
-										response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
-										response += '</tr>';
-									});
-									$('#tabla\\.uno').append(response);
-
-									$('#tabla\\.uno > tr').on("click", function(){
-										let id = $(this).data("id");
-										let args = {
-											action: "getOne",
-											temporal_id: $("#id-paciente").val(),
-											temptable_id: id
-										}
-					
-										$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-											let eg = data.temptable_eg.split(",");
-											$("#semanasEcoGen").val(eg[0]);
-											$("#diasEcoGen").val(eg[1]);
-											$("#lcn").val(data.temptable_lcn);
-											$("#saco").val(data.temptable_saco);
-											$("#boton\\.uno\\.guardar").data("id",id);
-										});
-									});
-								}
-							});
-						});
-					});
-				}
-			});
+			this.loadPrimtrim();
 		}
 		else if (this.hash=="#configuracion"){
 			this.displayElement("configuracion");
@@ -437,4 +254,190 @@ class app {
 	$("#dv").val("").trigger("change");
 	$("#psmACM").val("").trigger("change");
   }
+
+  loadPrimtrim(){
+	let args = {
+		action: "get",
+		temporal_id: $("#id-paciente").val()
+	}
+
+	$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+		$('#tabla\\.uno').empty();
+		$("#boton\\.uno\\.guardar").data("id",0);
+		if (Object.keys(data).length > 0) {
+			let response = '';
+			$.each(data, function(i,value){
+				response += '<tr data-id="' + value.temptable_id +'">';
+				response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
+				response += '</tr>';
+			});
+			$('#tabla\\.uno').append(response);
+
+			$('#tabla\\.uno > tr').on("click", function(){
+				let id = $(this).data("id");
+				let args = {
+					action: "getOne",
+					temporal_id: $("#id-paciente").val(),
+					temptable_id: id
+				}
+
+				$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+					let eg = data.temptable_eg.split(",");
+					$("#semanasEcoGen").val(eg[0]);
+					$("#diasEcoGen").val(eg[1]);
+					$("#lcn").val(data.temptable_lcn);
+					$("#saco").val(data.temptable_saco);
+					$("#boton\\.uno\\.guardar").data("id",id);
+				});
+			});
+
+			$(".primer-eliminar").on("click", function(event){
+				event.stopPropagation();
+				let args = {
+					action: "del",
+					temporal_id: $("#id-paciente").val(),
+					temptable_id: $(this).parent().parent().data("id")
+				}
+
+				$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+					app.loadPrimtrim();
+				});
+			});
+		}
+	});
+	}
+
+	loadSegtrim(){
+		let args = {
+			action: "get",
+			temporal_id: $("#id-paciente").val()
+		}
+
+		$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
+			$('#tabla\\.dos').empty();
+			$("#boton\\.dos\\.guardar").data("id",0);
+
+			if (Object.keys(data).length > 0) {
+				let response = '';
+				$.each(data, function(i,value){
+					response += '<tr data-id="' + value.tempdostable_correlativo +'">';
+					response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td><td><i class="fas fa-trash-alt segundo-eliminar"></i></td>';
+					response += '</tr>';
+				});
+				$('#tabla\\.dos').append(response);
+
+				$('#tabla\\.dos > tr').on("click", function(){
+					let id = $(this).data("id");
+					let args = {
+						action: "getOne",
+						temporal_id: $("#id-paciente").val(),
+						tempdostable_correlativo: id
+					}
+
+					$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
+						let eg = data.tempdostable_eg.split(",");
+						$("#semanasEcoGen").val(eg[0]);
+						$("#diasEcoGen").val(eg[1]);
+						$("#dbp").val(data.tempdostable_dbp);
+						$("#dof").val(data.tempdostable_dof); 
+						$("#cc").val(data.tempdostable_cc);
+						$("#ca").val(data.tempdostable_ca); 
+						$("#lf").val(data.tempdostable_lf);
+						$("#bvm").val(data.tempdostable_bvm);
+						$("#lh").val(data.tempdostable_lh);
+						$("#cerebelo").val(data.tempdostable_cerebelo);
+						$("#pfe").val(data.tempdostable_pfe);
+						$("#egP50").val(data.tempdostable_egP50);
+						$("#presentacion").val(data.tempdostable_presentacion);
+						$("#dorso").val(data.tempdostable_dorso);
+						$("#fcf").val(data.tempdostable_fcf);
+						$("#ecografia\\.segtrim\\.sexo").val(data.tempdostable_sexo);
+						$("#ev-morfo option:selected").val(data.tempdostable_morfo);
+						$("#comentarios-anatomia-informe-eg-texto").val(data.tempdostable_anatomia);
+						$("#ubicacion").val(data.tempdostable_ubicacion);
+						$("#incersion").val(data.tempdostable_incersion);
+						$("#grado-placenta").val(data.tempdostable_grado);
+						$("#liq-cualitativo-eco").val(data.tempdostable_liq);
+						$("#bvmEcoDos").val(data.tempdostable_bvmEcoDos);
+						$("#cordon").val(data.tempdostable_cordon);
+						$("#vasos").val(data.tempdostable_vasos);
+						$("#eco\\.seg\\.trim\\.select\\.comentario").val(data.tempdostable_comentario);
+						$("#comentarios-eco-dos-inf-dos").val(data.tempdostable_comentarios);
+						$("#boton\\.dos\\.guardar").data("id",id);
+					});
+				});
+
+				$(".segundo-eliminar").on("click", function(event){
+					event.stopPropagation();
+					let args = {
+						action: "del",
+						temporal_id: $("#id-paciente").val(),
+						tempdostable_id: $(this).parent().parent().data("id")
+					}
+	
+					$.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
+						app.loadSegtrim();
+					});
+				});
+			}
+		});
+	}
+
+	loadDoppler(){
+		let args = {
+			action: "get",
+			temporal_id: $("#id-paciente").val()
+		}
+
+		$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+			$('#tabla\\.tres').empty();
+			$("#boton\\.tres\\.guardar").data("id",0);
+			if (Object.keys(data).length > 0) {
+				let response = '';
+				$.each(data, function(i,value){
+					response += '<tr data-id="' + value.temptrestable_correlativo +'">';
+					response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_cm + '</td><td>' + value.temptrestable_cp + '</td><td>' + value.temptrestable_dv + '</td><td><i class="fas fa-trash-alt tercero-eliminar"></i></td>';
+					response += '</tr>';
+				});
+				$('#tabla\\.tres').append(response);
+
+				$('#tabla\\.tres > tr').on("click", function(){
+					let id = $(this).data("id");
+					let args = {
+						action: "getOne",
+						temporal_id: $("#id-paciente").val(),
+						temptrestable_correlativo: id
+					}
+
+					$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+						let eg = data.temptrestable_eg.split(",");
+						$("#semanasEcoGen").val(eg[0]);
+						$("#diasEcoGen").val(eg[1]);
+						$("#aud").val(data.temptrestable_utd);
+						$("#aui").val(data.temptrestable_uti); 
+						$("#auprom").val(data.temptrestable_put); 
+						$("#ipau").val(data.temptrestable_au);
+						$("#ipacm").val(data.temptrestable_cm);
+						$("#ccp").val(data.temptrestable_cp);
+						$("#dv").val(data.temptrestable_dv);
+						$("#psmACM").val(data.temptrestable_acm);
+						$("#boton\\.tres\\.guardar").data("id",id);
+					});
+				});
+
+				$(".tercero-eliminar").on("click", function(event){
+					event.stopPropagation();
+					let args = {
+						action: "del",
+						temporal_id: $("#id-paciente").val(),
+						temptrestable_id: $(this).parent().parent().data("id")
+					}
+	
+					$.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+						app.loadDoppler();
+					});
+				});
+			}
+		});
+	}
 }
