@@ -440,4 +440,37 @@ class app {
 			}
 		});
 	}
+
+	loadPacientes(){
+
+		let args = {
+            action: "get"
+		}
+		
+		$.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+            if (Object.keys(data).length > 0) {
+                let response ="";
+				
+				$.each(data, function(i,value){
+                    response += '<tr data-id="' + value.temporal_id +'"><td>' + value.temporal_id + '</td><td>' + value.temporal_name + '</td><td>' + value.temporal_edad + '</td><td>' + value.temporal_fur + '</td><td>' + value.temporal_semanas +'.'+ value.temporal_dias +'</td><td>' + value.temporal_fpp + '</td><td><i class="fas fa-trash-alt pacientes-eliminar"></i></td>';
+                    response += '</tr>';
+				});
+				
+                $("#graficosBody").html('<table class="table"><thead class="thead-dark"><tr><th scope="col">RUT</th><th scope="col">Nombre</th><th scope="col">Edad</th><th scope="col">FUM</th><th scope="col">Edad Gestacional</th><th scope="col">FPP</th></tr></thead><tbody id="tabla.pacientes"></tbody></table>');
+                $("#tabla\\.pacientes").html(response);
+
+				$(".pacientes-eliminar").on("click", function(event){
+					event.stopPropagation();
+					let args = {
+						action: "del",
+						temporal_id: $("#id-paciente").val(),
+					}
+	
+					$.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
+						aplication.loadPacientes();
+					});
+				});
+            }
+		});
+	}
 }
