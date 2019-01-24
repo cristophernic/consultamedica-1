@@ -656,7 +656,7 @@ $( '#graficoLcnDos' ).on( 'click', function() {
                                 eG = eG.replace(",", ".");
                                 eG = parseFloat(eG);
 
-                                if (lcnegx[i] == trunc(eG)) {
+                                if (lcnegx[i] == Math.trunc(eG)) {
                                     var lcn = val.temptable_lcn;
                                     lcn = lcn.toString();
                                     lcn = lcn.replace(",", ".");
