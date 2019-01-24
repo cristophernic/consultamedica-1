@@ -78,7 +78,7 @@ $( document ).ready(function() {
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-            app.loadPrimtrim();
+            aplication.loadPrimtrim();
         });
     });
 
@@ -153,7 +153,7 @@ $( document ).ready(function() {
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
-            app.loadSegtrim();
+            aplication.loadSegtrim();
         });
     });
 
@@ -194,7 +194,7 @@ $( document ).ready(function() {
         }
 
         $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
-            app.loadDoppler();
+            aplication.loadDoppler();
         });
     });
 
