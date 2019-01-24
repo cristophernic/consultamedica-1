@@ -1939,240 +1939,279 @@ $( '#infecoObsSegTrim1' ).on( 'click', function() {
     $( '#impDoppler3').remove();
     $( '#impDoppler2').remove();
     $( '#impDoppler1').remove();
-    $('#graficoInfecoObsSegTrimPFEView').highcharts({
-            chart: {
-            height: 512
-        },
-       title: {
-           text: 'Peso Fetal Estimado *',
-           x: -20, //center
-               style: {
-            fontSize: '14px'
-        }
-       },
-            legend: {
-            itemStyle: {
-                fontSize: '10px',
-                fontWeight:'normal'
-            }
-        },
-       plotOptions: {
-           series: {
-               enableMouseTracking: false,
-               pointInterval: 1
-           }
-       },
-       yAxis: {
-           title: { text: 'Kilogramos' },
-           tickPositions: [100, 560, 1020, 1480, 1940, 2400, 2860, 3320, 3780, 4340, 4900]
-       },
-       colors: ['#313131', '#313131', '#313131'],
-       xAxis: {
-           categories: ['16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']
-       },
-       credits: {enabled: false},
-       series: [{
-           type: "line",
-           name: 'Pct 3',
-           dashStyle: "Dot",
-           marker: {enabled: false},
-           data: [110,136,167,205,248,299,359,426,503,589,685,791,908,1034,1169,1313,1465,1622,1783,1946,2110,2271,2427,2576,2714]
-       }, {
-           type: "line",
-           name: 'Pct 10',
-           marker: { enabled: false },
-           data: [121,150,185,227,275,331,398,471,556,652,758,876,1004,1145,1294,1453,1621,1794,1973,2154,2335,2513,2686,2851,2985]
-       }, {
-           type: "line",
-           name: 'Pct 90',
-           marker: { enabled: false },
-           data: [171,212,261,319,387,467,559,665,784,918,1068,1234,1416,1613,1824,2049,2285,2530,2781,3036,3291,3543,3786,4019,4234]
-       }, {
-           type: "line",
-           name: 'Pct 97',
-           dashStyle: "Dot",
-           marker: { enabled: false, },
-           data: [183,226,279,341,414,499,598,710,838,981,1141,1319,1513,1724,1949,2189,2441,2703,2971,3244,3516,3785,4045,4294,4474]
-       }, {
-           type: "line",
-           name: 'Peso',
-           dashStyle: "Dot",
-           marker: {symbol:'square'},
-           lineWidth: 0,
-           data: (function () {
-               var data = [];
-               var edadGest = parseInt(localStorage.eg) -1;
+    $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(respuesta){
+		if (Object.keys(respuesta).length > 0) {
+            $('#graficoInfecoObsSegTrimPFEView').highcharts({
+                    chart: {
+                    height: 512
+                },
+            title: {
+                text: 'Peso Fetal Estimado *',
+                x: -20, //center
+                    style: {
+                    fontSize: '14px'
+                }
+            },
+                    legend: {
+                    itemStyle: {
+                        fontSize: '10px',
+                        fontWeight:'normal'
+                    }
+                },
+            plotOptions: {
+                series: {
+                    enableMouseTracking: false,
+                    pointInterval: 1
+                }
+            },
+            yAxis: {
+                title: { text: 'Kilogramos' },
+                tickPositions: [100, 560, 1020, 1480, 1940, 2400, 2860, 3320, 3780, 4340, 4900]
+            },
+            colors: ['#313131', '#313131', '#313131'],
+            xAxis: {
+                categories: ['16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']
+            },
+            credits: {enabled: false},
+            series: [{
+                type: "line",
+                name: 'Pct 3',
+                dashStyle: "Dot",
+                marker: {enabled: false},
+                data: [110,136,167,205,248,299,359,426,503,589,685,791,908,1034,1169,1313,1465,1622,1783,1946,2110,2271,2427,2576,2714]
+            }, {
+                type: "line",
+                name: 'Pct 10',
+                marker: { enabled: false },
+                data: [121,150,185,227,275,331,398,471,556,652,758,876,1004,1145,1294,1453,1621,1794,1973,2154,2335,2513,2686,2851,2985]
+            }, {
+                type: "line",
+                name: 'Pct 90',
+                marker: { enabled: false },
+                data: [171,212,261,319,387,467,559,665,784,918,1068,1234,1416,1613,1824,2049,2285,2530,2781,3036,3291,3543,3786,4019,4234]
+            }, {
+                type: "line",
+                name: 'Pct 97',
+                dashStyle: "Dot",
+                marker: { enabled: false, },
+                data: [183,226,279,341,414,499,598,710,838,981,1141,1319,1513,1724,1949,2189,2441,2703,2971,3244,3516,3785,4045,4294,4474]
+            }, {
+                type: "line",
+                name: 'Peso',
+                dashStyle: "Dot",
+                marker: {symbol:'square'},
+                lineWidth: 0,
+                data: (function () {
+                    var data = [];
 
-               for (i = 16; i <= edadGest; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
-               data.push({
-                   y: parseFloat($('#pfe').val()),
-               });
-               for (i = edadGest + 1; i <= 39; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
-               return data;
-           }())
-       }]
-    });
-    $('#graficoCaView').highcharts({
-            chart: {
-            height: 250
-        },
-       title: {
-           text: 'Circunferencia Abdominal **',
-           x: -20, //center
-               style: {
-            fontSize: '14px'
-        }
-       },
-       subtitle: {
-           text: 'Milimetros (mm)',
-           x: -20
-       },
-            legend: {
-            itemStyle: {
-                fontSize: '10px',
-                fontWeight:'normal'
-            }
-        },
-       plotOptions: {
-           series: {
-               enableMouseTracking: false
-           }
-       },
-       yAxis: {
-           title: { text: 'Milimetros (mm)' },
-           tickPositions: [20, 60, 100, 140, 180, 220, 260, 300, 340, 400]
-       },
-       colors: ['#313131', '#313131', '#313131'],
-       xAxis: {
-           categories:['12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40']
-       },
-       credits: { enabled: false },
-       series: [{
-           type: "line",
-           name: 'Pct. 3',
-           dashStyle: "Dot",
-           marker: { enabled: false },
-           data: [40,50,60,72,84,97,107,119,131,141,151,161,171,181,191,200,209,218,227,236,245,253,261,269,277,285,292,299,307]
-       }, {
-           type: "line",
-           name: 'Pct 97',
-           dashStyle: "Dot",
-           marker: { enabled: false },
-           data: [68,78,88,101,112,127,141,155,168,183,196,209,223,235,248,260,271,284,295,306,318,329,339,349,359,370,380,389,399]
-       }, {
-           type: "line",
-           name: 'CA',
-           dashStyle: "Dot",
-           marker: { symbol: 'square' },
-           lineWidth: 0,
-           data: (function () {
-               var data = [];
-               var edadGest = parseInt(localStorage.eg) - 1;
+                    for (i = 16; i <= 39; i++) {
+                        flag = false;
+                        $.each(respuesta, function(X,val){
+                            var eG = val.tempdostable_eg;
+                            eG = eG.toString();
+                            eG = eG.replace(",", ".");
+                            eG = parseFloat(eG);
 
-               for (i = 12; i <= edadGest; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
+                            if (i == eG){
+                                var pfe = val.tempdostable_pfe;
+                                pfe = pfe.toString();
+                                pfe = pfe.replace(",", ".");
+                                pfe = parseFloat(pfe);                                
+                                data.push({
+                                    y: pfe,
+                                });
+                                flag = true;
+                            }
+                        });
 
-               var ca = $("#ca").val();
-               ca = ca.toString();
-               ca = ca.replace(",", ".");
-               ca = parseFloat(ca);
+                        if (flag == false) {
+                            data.push({
+                                y:0,
+                            });
+                        }
 
-               data.push({
-                   y:ca,
-               });
-               for (i = edadGest + 1; i <= 39; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
-               return data;
-           }())
-       }]
-   });
+                    }
+                    return data;
+                }())
+            }]
+            });
+            $('#graficoCaView').highcharts({
+                    chart: {
+                    height: 250
+                },
+            title: {
+                text: 'Circunferencia Abdominal **',
+                x: -20, //center
+                    style: {
+                    fontSize: '14px'
+                }
+            },
+            subtitle: {
+                text: 'Milimetros (mm)',
+                x: -20
+            },
+                    legend: {
+                    itemStyle: {
+                        fontSize: '10px',
+                        fontWeight:'normal'
+                    }
+                },
+            plotOptions: {
+                series: {
+                    enableMouseTracking: false
+                }
+            },
+            yAxis: {
+                title: { text: 'Milimetros (mm)' },
+                tickPositions: [20, 60, 100, 140, 180, 220, 260, 300, 340, 400]
+            },
+            colors: ['#313131', '#313131', '#313131'],
+            xAxis: {
+                categories:['12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40']
+            },
+            credits: { enabled: false },
+            series: [{
+                type: "line",
+                name: 'Pct. 3',
+                dashStyle: "Dot",
+                marker: { enabled: false },
+                data: [40,50,60,72,84,97,107,119,131,141,151,161,171,181,191,200,209,218,227,236,245,253,261,269,277,285,292,299,307]
+            }, {
+                type: "line",
+                name: 'Pct 97',
+                dashStyle: "Dot",
+                marker: { enabled: false },
+                data: [68,78,88,101,112,127,141,155,168,183,196,209,223,235,248,260,271,284,295,306,318,329,339,349,359,370,380,389,399]
+            }, {
+                type: "line",
+                name: 'CA',
+                dashStyle: "Dot",
+                marker: { symbol: 'square' },
+                lineWidth: 0,
+                data: (function () {
+                    var data = [];
+
+
+                    for (i = 12; i <= 39; i++) {
+                        flag = false;
+                        $.each(respuesta, function(X,val){
+                            var eG = val.tempdostable_eg;
+                            eG = eG.toString();
+                            eG = eG.replace(",", ".");
+                            eG = parseFloat(eG);
+
+                            if (i == eG){
+                                var ca = val.tempdostable_ca;
+                                ca = ca.toString();
+                                ca = ca.replace(",", ".");
+                                ca = parseFloat(ca);     
+                                data.push({
+                                    y: ca,
+                                });
+                                flag = true;
+                            }
+                        });
+
+                        if (flag == false) {
+                            data.push({
+                                y:0,
+                            });
+                        }
+
+                    }
+
+                    return data;
+                }())
+            }]
+        });
+                
+        $('#graficoBVMView').highcharts({
+                    chart: {
+                    height: 250
+                },
+                title: {
+                    text: 'BVM de Líquido Amniótico ***',
+                    x: -20,
+                        style: {
+                    fontSize: '14px'
+                }
+                },
+                plotOptions: {
+                    series: {
+                        enableMouseTracking: false
+                    }
+                },
+                    legend: {
+                    itemStyle: {
+                        fontSize: '10px',
+                        fontWeight:'normal'
+                    }
+                },
+                yAxis: {
+                    title: { text: 'Milimetros (mm)' },
+                    tickPositions: [5, 16, 27, 38, 49, 60, 71, 82, 93, 104]
+                },
+                colors: ['#313131','#313131','#313131'],
+                xAxis: {
+                    categories: ['16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40']
+                },
+                credits: {enabled:false},
+                series: [{
+                    type: "line",
+                    name: 'Pct. 5',
+                    dashStyle: "Dot",
+                    marker: {enabled:false},
+                    data: [23,25,27,28,29,29,30,30,30,30,30,30,30,29,29,29,29,29,28,28,27,26,24,23,21]
+                }, {
+                    type: "line",
+                    name: 'Pct. 95',
+                    dashStyle: "Dot",
+                    marker: { enabled: false },
+                    data: [59,62,64,66,67,68,68,68,68,68,68,69,69,69,69,70,71,72,72,72,71,70,68,66,62]
+                }, {
+                    type: "line",
+                    name: 'BVM',
+                    dashStyle: "Dot",
+                    marker: { symbol: 'square' },
+                    lineWidth: 0,
+                    data: (
+                        function () {
+                            var data = [];
+
+                            for (i = 16; i <= 39; i++) {
+                                flag = false;
+                                $.each(respuesta, function(X,val){
+                                    var eG = val.tempdostable_eg;
+                                    eG = eG.toString();
+                                    eG = eG.replace(",", ".");
+                                    eG = parseFloat(eG);
         
-   $('#graficoBVMView').highcharts({
-             chart: {
-             height: 250
-         },
-         title: {
-             text: 'BVM de Líquido Amniótico ***',
-             x: -20,
-                 style: {
-             fontSize: '14px'
-         }
-         },
-         plotOptions: {
-             series: {
-                 enableMouseTracking: false
-             }
-         },
-             legend: {
-             itemStyle: {
-                 fontSize: '10px',
-                 fontWeight:'normal'
-             }
-         },
-         yAxis: {
-             title: { text: 'Milimetros (mm)' },
-             tickPositions: [5, 16, 27, 38, 49, 60, 71, 82, 93, 104]
-         },
-         colors: ['#313131','#313131','#313131'],
-         xAxis: {
-             categories: ['16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40']
-         },
-         credits: {enabled:false},
-         series: [{
-             type: "line",
-             name: 'Pct. 5',
-             dashStyle: "Dot",
-             marker: {enabled:false},
-             data: [23,25,27,28,29,29,30,30,30,30,30,30,30,29,29,29,29,29,28,28,27,26,24,23,21]
-         }, {
-             type: "line",
-             name: 'Pct. 95',
-             dashStyle: "Dot",
-             marker: { enabled: false },
-             data: [59,62,64,66,67,68,68,68,68,68,68,69,69,69,69,70,71,72,72,72,71,70,68,66,62]
-         }, {
-             type: "line",
-             name: 'BVM',
-             dashStyle: "Dot",
-             marker: { symbol: 'square' },
-             lineWidth: 0,
-             data: (
-                 function () {
-                     var data = [];
-                     var edadGest = parseInt(localStorage.eg) -1;
- 
-                     for (i = 16; i <= edadGest; i ++ ) {
-                         data.push({
-                             y: 0,
-                         });
-                     }
-                     data.push({
-                             y: parseFloat($('#bvm').val()),
-                         });
-                     for (i = edadGest +1; i <= 39; i ++ ) {
-                         data.push({
-                             y: 0,
-                         });
-                     }
-                     return data;
-                 }())
-             }]
-     });
-    $('#popupGraficos').modal('show');
+                                    if (i == eG){
+                                        var bvm = val.tempdostable_bvm;
+                                        bvm = bvm.toString();
+                                        bvm = bvm.replace(",", ".");
+                                        bvm = parseFloat(bvm);     
+                                        data.push({
+                                            y: bvm,
+                                        });
+                                        flag = true;
+                                    }
+                                });
+        
+                                if (flag == false) {
+                                    data.push({
+                                        y:0,
+                                    });
+                                }
+        
+                            }
+                            return data;
+                        }())
+                    }]
+            });
+            $('#popupGraficos').modal('show');
+        }
+    });
 });
 
 $( '#infecoObsSegTrim2' ).on( 'click', function() {
@@ -2262,21 +2301,35 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
            lineWidth: 0,
            data: (function () {
                var data = [];
-               var edadGest = parseInt(localStorage.eg) - 1;
 
-               for (i = 12; i <= edadGest; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
-               data.push({
-                   y: parseInt(document.getElementById("cc").value),
-               });
-               for (i = edadGest + 1; i <= 39; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
+               for (i = 12; i <= 39; i++) {
+                flag = false;
+                $.each(respuesta, function(X,val){
+                    var eG = val.tempdostable_eg;
+                    eG = eG.toString();
+                    eG = eG.replace(",", ".");
+                    eG = parseFloat(eG);
+
+                    if (i == eG){
+                        var cc = val.tempdostable_cc;
+                        cc = cc.toString();
+                        cc = cc.replace(",", ".");
+                        cc = parseFloat(cc);     
+                        data.push({
+                            y: cc,
+                        });
+                        flag = true;
+                    }
+                });
+
+                if (flag == false) {
+                    data.push({
+                        y:0,
+                    });
+                }
+
+            }
+
                return data;
            }())
        }]
@@ -2338,21 +2391,35 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
                 lineWidth: 0,
                 data: (function () {
                     var data = [];
-                    var edadGest = parseInt(localStorage.eg) - 1;
 
-                    for (i = 15; i <= edadGest; i++) {
-                        data.push({
-                            y: 0,
+                    for (i = 12; i <= 39; i++) {
+                        flag = false;
+                        $.each(respuesta, function(X,val){
+                            var eG = val.tempdostable_eg;
+                            eG = eG.toString();
+                            eG = eG.replace(",", ".");
+                            eG = parseFloat(eG);
+        
+                            if (i == eG){
+                                var cerebelo = val.tempdostable_cerebelo;
+                                cerebelo = cerebelo.toString();
+                                cerebelo = cerebelo.replace(",", ".");
+                                cerebelo = parseFloat(cerebelo);     
+                                data.push({
+                                    y: cerebelo,
+                                });
+                                flag = true;
+                            }
                         });
+        
+                        if (flag == false) {
+                            data.push({
+                                y:0,
+                            });
+                        }
+        
                     }
-                    data.push({
-                        y: parseInt(document.getElementById("cerebelo").value),
-                    });
-                    for (i = edadGest + 1; i <= 39; i++) {
-                        data.push({
-                            y: 0,
-                        });
-                    }
+
                     return data;
                 }())
             }]
@@ -2408,19 +2475,34 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
            lineWidth: 0,
            data: (function () {
                var data = [];
-               var edadGest = parseInt(localStorage.eg) - 1;
 
-               for (i = 12; i <= edadGest; i++) {
-                   data.push({ y: 0, });
-               }
-               data.push({
-                   y: parseInt(document.getElementById("lf").value),
-               });
-               for (i = edadGest + 1; i <= 39; i++) {
-                   data.push({
-                       y: 0,
-                   });
-               }
+               for (i = 12; i <= 39; i++) {
+                flag = false;
+                $.each(respuesta, function(X,val){
+                    var eG = val.tempdostable_eg;
+                    eG = eG.toString();
+                    eG = eG.replace(",", ".");
+                    eG = parseFloat(eG);
+
+                    if (i == eG){
+                        var lf = val.tempdostable_lf;
+                        lf = lf.toString();
+                        lf = lf.replace(",", ".");
+                        lf = parseFloat(lf);     
+                        data.push({
+                            y: lf,
+                        });
+                        flag = true;
+                    }
+                });
+
+                if (flag == false) {
+                    data.push({
+                        y:0,
+                    });
+                }
+
+            }
                return data;
            }())
        }]
@@ -2476,19 +2558,34 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
                 lineWidth: 0,
                 data: (function () {
                     var data = [];
-                    var edadGest = parseInt(localStorage.eg) - 1;
-
-                    for (i = 12; i <= edadGest; i++) {
-                        data.push({ y: 0, });
-                    }
-                    data.push({
-                        y: parseInt(document.getElementById("lh").value),
-                    });
-                    for (i = edadGest + 1; i <= 39; i++) {
-                        data.push({
-                            y: 0,
+                    for (i = 12; i <= 39; i++) {
+                        flag = false;
+                        $.each(respuesta, function(X,val){
+                            var eG = val.tempdostable_eg;
+                            eG = eG.toString();
+                            eG = eG.replace(",", ".");
+                            eG = parseFloat(eG);
+        
+                            if (i == eG){
+                                var lh = val.tempdostable_lh;
+                                lh = lh.toString();
+                                lh = lh.replace(",", ".");
+                                lh = parseFloat(lh);     
+                                data.push({
+                                    y: lh,
+                                });
+                                flag = true;
+                            }
                         });
+        
+                        if (flag == false) {
+                            data.push({
+                                y:0,
+                            });
+                        }
+        
                     }
+
                     return data;
                 }())
             }]
