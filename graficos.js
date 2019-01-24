@@ -470,6 +470,7 @@ $( '#graficoLcn' ).on( 'click', function() {
     $( '#impDoppler3').remove();
     $( '#impDoppler2').remove();
     $( '#impDoppler1').remove();
+    
     $('#graficoLcnBaseView').highcharts({
         title: {
             text: '',
@@ -564,6 +565,118 @@ $( '#graficoLcn' ).on( 'click', function() {
     });
 
     $('#popupGraficos').modal('show');
+});
+
+$( '#graficoLcnDos' ).on( 'click', function() {
+    $('#graficosTitle').html('<i class="fa fa-square" aria-hidden="true"></i> Longitud Cefalo Nalgas (LCN) en milimetros');
+    $('#graficosBody').html("<div class='row'><div class='col'><div id='graficoLcnBaseView'></div></div></div>");
+        
+    var egLcn = parseFloat($("input[name='eg']").val());
+    $( '#impEcoObsSegTrim1').remove();
+    $( '#impEcoObsSegTrim2').remove();
+    $( '#impDoppler3').remove();
+    $( '#impDoppler2').remove();
+    $( '#impDoppler1').remove();
+    
+    let args = {
+		action: "get",
+		temporal_id: $("#id-paciente").val()
+	}
+
+	$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(respuesta){
+		if (Object.keys(respuesta).length > 0) {
+            $('#graficoLcnBaseView').highcharts({
+                title: {
+                    text: '',
+                    x: -20 //center
+                },
+                xAxis: {
+                    categories: ['6', '7', '8', '9', '10',  '11', '12', '13', '14', '15']
+                },
+                yAxis: {
+                    title: {
+                        text: 'milimetros (mm)'
+                    },
+                    tickPositions: [2, 11, 22, 33, 44, 55, 66, 77, 88, 99, 110]
+                },
+                credits: {enabled:false},
+                colors: ['#313131', '#313131', '#313131'],
+                plotOptions: {
+                    series: {
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: '(-) 2DE',
+                    type: "line",
+                    marker: { enabled: false },
+                    data: [2.6, 7.7, 14, 20.5, 26.2,35.5, 46.8, 58.2, 69.8, 80.2],
+                    dashStyle: 'shortdot'
+                }, {
+                    name: 'Media',
+                    type: "line",
+                    marker: { enabled: false },
+                    data: [3.8, 8.9, 15.4, 22.5, 29.5,40.5, 52.9, 66.5, 79.0, 90.1]
+                }, {
+                    name: '(+) 2DE',
+                    type: "line",
+                    marker: { enabled: false },
+                    data: [5.3, 10.4, 17.1, 24.9, 33.2,46.4, 60.8, 75.7, 89.1, 100.1],
+                    dashStyle: 'shortdot'
+                }, {
+                    type: "line",
+                    name: 'LCN (Hadlock y col. Radiology 182. 501, 1992)',
+                    dashStyle: "Dot",
+                    marker: { symbol: 'square' },
+                    lineWidth: 0,
+                    data: (function () {
+
+                        // generate an array of random data
+                        var data = [];
+
+                        var lcnegx = [];
+                        var flag = false;
+
+                        lcnegx[1] = 6;
+                        lcnegx[2] = 7;
+                        lcnegx[3] = 8;
+                        lcnegx[4] = 9;
+                        lcnegx[5] = 10;
+                        lcnegx[6] = 11;
+                        lcnegx[7] = 12;
+                        lcnegx[8] = 13;
+                        lcnegx[9] = 14;
+                        lcnegx[10] = 14;
+                        for (i = 1; i <= 10; i++) {
+                            $.each(respuesta, function(i,val){
+                                if (lcnegx[i] >= parseInt(parsefloat(val.temptable_eg))) {
+                                    var lcn = val.temptable_lcn;
+                                    lcn = lcn.toString();
+                                    lcn = lcn.replace(",", ".");
+                                    lcn = parseFloat(lcn);
+                                        
+                                    data.push({
+                                        y: lcn,
+                                    });
+                                    flag = true;
+                                }
+                            })
+
+                            if (flag == false) {
+                                data.push({
+                                    y:0,
+                                });
+                            }
+                        }
+                        return data;
+                    }())
+                }]
+            });
+        }
+        $('#popupGraficos').modal('show');
+    });
+
+
 });
 
 $( '#graficoSaco' ).on( 'click', function() {
