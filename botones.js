@@ -33,25 +33,27 @@ function activarBotones() {
 	 $("input[name='eg']").val(localStorage.eg);
  });
   
-  $("input[name='fee']").on('change', function() {
-   localStorage.fum = $("input[name='fum']").val();
-   localStorage.fee = $(this).val();
-   localStorage.eg = calcularEG();
-   $("input[name='fee']").val(localStorage.fee);
-   $("input[name='eg']").val(localStorage.eg);
+	$("input[name='fee']").on('change', function() {
+    	localStorage.fum = $("input[name='fum']").val();
+		localStorage.fee = $(this).val();
+   		localStorage.eg = calcularEG();
+		$("input[name='fee']").val(localStorage.fee);
+		$("input[name='eg']").val(localStorage.eg);
 	  
-   if (this.id != "fee-dos"){
-	   $('#fee-dos').datepicker('setValue', localStorage.fee);
-   }
-   if (this.id != "fee-seis"){
-	   $('#fee-seis').datepicker('setValue', localStorage.fee);
-   }
-	  
-	  var semanas = Math.trunc(localStorage.eg)
-	 var dias =  Math.trunc((localStorage.eg - Math.trunc(localStorage.eg)) * 10)
+		if (this.id != "fee-uno"){
+			$('#fee-uno').datepicker('setValue', localStorage.fee);
+		}
+		if (this.id != "fee-dos"){
+			$('#fee-dos').datepicker('setValue', localStorage.fee);
+		}
+		if (this.id != "fee-tres"){
+			$('#fee-tres').datepicker('setValue', localStorage.fee);
+		}
+		var semanas = Math.trunc(localStorage.eg)
+		var dias =  Math.trunc((localStorage.eg - Math.trunc(localStorage.eg)) * 10)
 
-	 $('#semanasEcoGen').val(semanas);
-	$('#diasEcoGen').val(dias);
-	 $("input[name='eg']").val(localStorage.eg);
- });
+		$('#semanasEcoGen').val(semanas);
+		$('#diasEcoGen').val(dias);
+		$("input[name='eg']").val(localStorage.eg);
+	});
 }

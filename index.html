@@ -413,6 +413,16 @@
                     <div class="tab-pane fade show active" id="medidas-eco-prim" role="tabpanel">
                         <div class="card mb-3">
                             <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label for="fee" class="col-form-label">Fecha de examen</label>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" type="text" id="fee-uno" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
+                                    </div>
+                                </div>
+
+
                                     <div class="form-group row">
                                         <div class="col-md-12 col-lg-3 mb-2">
                                             <p>Medida del embrión</p>
@@ -2538,13 +2548,6 @@
                             <label for="nacionalidadInput">Nacionalidad</label>
                             <input type="text" class="form-control" id="nacionalidadInput" aria-describedby="nacionalidadInputHelp">
                             <small id="nacionalidadInputHelp" class="form-text text-muted">nacionalidad.</small>
-                        </div>
-                        <!-- fecha de exámen-->
-                        <div class="col">
-                            <label for="fee" class="col-form-label">Fecha de examen (Modificable)</label>
-                        </div>
-                        <div class="col">
-                            <input class="form-control" type="text" id="fee-dos" data-date-format="dd/mm/yyyy" onfocus="blur();" name="fee">
                         </div>
                     </div>
                 </div>

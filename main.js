@@ -984,12 +984,17 @@ $( document ).ready(function() {
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
-			$('#fee-seis').datepicker();
-			$('#fee-seis').datepicker()
+			$('#fee-uno').datepicker();
+			$('#fee-uno').datepicker()
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
-
+				  $('#fee-tres').datepicker();
+				  $('#fee-tres').datepicker()
+						.on('changeDate', function(ev){
+						  $(this).trigger("change");
+						});
+						
 				  $('#infadicionalNoController').on('click', function(){
 					if ($('#infadicionalView').hasClass('d-none') == false){
 						$('#infadicionalView').addClass('d-none');
