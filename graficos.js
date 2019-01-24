@@ -1669,7 +1669,7 @@ $( '#infDoppler1' ).on( 'click', function() {
                                     eG = eG.replace(",", ".");
                                     eG = parseFloat(eG);
         
-                                    if (categories[i] == Math.trunc(eG,)) {
+                                    if (i == Math.trunc(eG,)) {
                                         var auprom = val.temptrestable_put;
                                         auprom = auprom.toString();
                                         auprom = auprom.replace(",", ".");
@@ -1756,7 +1756,7 @@ $( '#infDoppler1' ).on( 'click', function() {
                                 eG = eG.replace(",", ".");
                                 eG = parseFloat(eG);
     
-                                if (categories[i] == Math.trunc(eG,)) {
+                                if (i == Math.trunc(eG,)) {
                                     var ipau = val.temptrestable_au;
                                     ipau = ipau.toString();
                                     ipau = ipau.replace(",", ".");
@@ -1843,7 +1843,7 @@ $( '#infDoppler1' ).on( 'click', function() {
                                 eG = eG.replace(",", ".");
                                 eG = parseFloat(eG);
     
-                                if (categories[i] == Math.trunc(eG,)) {
+                                if (i == Math.trunc(eG,)) {
                                     var ipacm = val.temptrestable_cm;
                                     ipacm = ipacm.toString();
                                     ipacm = ipacm.replace(",", ".");
@@ -1929,7 +1929,7 @@ $( '#infDoppler1' ).on( 'click', function() {
                                 eG = eG.replace(",", ".");
                                 eG = parseFloat(eG);
     
-                                if (categories[i] == Math.trunc(eG,)) {
+                                if (i == Math.trunc(eG,)) {
                                     var ccp = val.temptrestable_cp;
                                     ccp = ccp.toString();
                                     ccp = ccp.replace(",", ".");
