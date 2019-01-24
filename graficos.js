@@ -648,7 +648,7 @@ $( '#graficoLcnDos' ).on( 'click', function() {
                         lcnegx[9] = 14;
                         lcnegx[10] = 14;
                         for (i = 1; i <= 10; i++) {
-                            $.each(respuesta, function(i,val){
+                            $.each(respuesta, function(X,val){
 
                                 var eG = val.temptable_eg;
                                 eG = eG.toString();
