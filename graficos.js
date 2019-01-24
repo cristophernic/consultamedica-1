@@ -741,31 +741,134 @@ $( '#graficoSaco' ).on( 'click', function() {
                  marker: { symbol: 'square' },
                  lineWidth: 0,
                  data: (function () {
-                     var data = [];
-                     var categories = [4.2,4.3,4.4,4.5,4.6,5,5.1,5.2,5.3,5.4,5.5,5.6,6,6.1,6.2,6.3,6.4,6.5,6.6,7,7.1,7.2,7.3,7.4,7.5,7.6,8];
-                     var edadGest = parseInt(localStorage.eg);
+                    var data = [];
+                    var categories = [4.2,4.3,4.4,4.5,4.6,5,5.1,5.2,5.3,5.4,5.5,5.6,6,6.1,6.2,6.3,6.4,6.5,6.6,7,7.1,7.2,7.3,7.4,7.5,7.6,8];
+                    var edadGest = parseInt(localStorage.eg);
 
-                     var saco = $("#saco").val();
-                     saco = saco.toString();
-                     saco = saco.replace(",", ".");
-                     saco = parseFloat(saco);
-                     
-                     for (i = 0; i <= 27; i++) {
+                    var saco = $("#saco").val();
+                    saco = saco.toString();
+                    saco = saco.replace(",", ".");
+                    saco = parseFloat(saco);
+                    
+                    for (i = 0; i <= 27; i++) {
 
-                         if (categories[i] == edadGest){
-                              data.push({
-                                   y: saco,
-                              });
-                         }
-                         else{
-                              data.push({ y: -2, });
-                         }
-                     }
-                     return data;
+                        if (categories[i] == edadGest){
+                             data.push({
+                                  y: saco,
+                             });
+                        }
+                        else{
+                             data.push({ y: -2, });
+                        }
+                    }
+                    return data;
                  }())
              }]
          });
     $('#popupGraficos').modal('show');
+});
+
+
+$( '#graficoSacoDos' ).on( 'click', function() {
+    $('#graficosTitle').html('<i class="fa fa-square" aria-hidden="true"></i> Saco Gestacional promedio en milímetros (mm)');
+    $('#graficosBody').html("<div id='graficoSacoView'></div>");
+    $( '#impEcoObsSegTrim1').remove();
+    $( '#impEcoObsSegTrim2').remove();
+    $( '#impDoppler3').remove();
+    $( '#impDoppler2').remove();
+    $( '#impDoppler1').remove();
+
+    let args = {
+		action: "get",
+		temporal_id: $("#id-paciente").val()
+	}
+
+	$.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(respuesta){
+		if (Object.keys(respuesta).length > 0) {
+            $('#graficoSacoView').highcharts({
+             title: {
+                 text: '',
+                 x: -20
+             },
+             subtitle: {
+                 text: '',
+                 x: -20
+             },
+             plotOptions: {
+                 series: {
+                     enableMouseTracking: false
+                 }
+             },
+             yAxis: {
+                 title: { text: '' },
+                 tickPositions: [0, 5, 10, 15, 20, 25, 30, 35, 40]
+             },
+             colors: ['#313131', '#313131', '#313131'],
+             xAxis: {
+                 categories:['4.2','4.3','4.4','4.5','4.6','5','5.1','5.2','5.3','5.4','5.5','5.6','6','6.1','6.2','6.3','6.4','6.5','6.6','7','7.1','7.2','7.3','7.4','7.5','7.6','8']
+             },
+             credits: { enabled: false },
+             series: [{
+                 type: "line",
+                 name: '-DE',
+                 marker: { enabled: false },
+                 data: [0.12,1.01,1.45,2.14,2.93,4.1,5.1,6.1,7,8,9,9.9,10.7,11.5,12.2,13.3,13.9,14.9,15.9,16.7,17.6,18.6,19.4,20.4,21,22,23],
+                 dashStyle: 'shortdot'
+             },{
+                 type: "line",
+                 name: 'media',
+                 marker: { enabled: false },
+                 data: [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,19.9,20.9,21.8,22.9,24.1,25,26,27,28,29,30]
+             },{
+                 type: "line",
+                 name: '+DE',
+                 marker: { enabled: false },
+                 data: [9.9,10.9,11.6,12.6,13.6,15.1,16,17,18,19,19.9,21.1,21.9,22.9,24.1,25.1,26.1,27,28,29,30,31,32,33,34,35,36],
+                 dashStyle: 'shortdot'
+             }, {
+                 type: "line",
+                 name: 'Saco gestacional [Hellmann y col. Am. J O & G 1968; 1.03(6)789 800]',
+                 dashStyle: "Dot",
+                 marker: { symbol: 'square' },
+                 lineWidth: 0,
+                 data: (function () {
+                    var data = [];
+                    var categories = [4.2,4.3,4.4,4.5,4.6,5,5.1,5.2,5.3,5.4,5.5,5.6,6,6.1,6.2,6.3,6.4,6.5,6.6,7,7.1,7.2,7.3,7.4,7.5,7.6,8];
+                    for (i = 0; i <= 27; i++) {
+                        flag = false;
+                        $.each(respuesta, function(X,val){
+
+                            var eG = val.temptable_eg;
+                            eG = eG.toString();
+                            eG = eG.replace(",", ".");
+                            eG = parseFloat(eG);
+
+                            if (categories[i] == Math.trunc(eG,)) {
+                                var saco = val.temptable_saco;
+                                saco = saco.toString();
+                                saco = saco.replace(",", ".");
+                                saco = parseFloat(saco);
+                                    
+                                data.push({
+                                    y: saco,
+                                });
+                                flag = true;
+                            }
+                        });
+
+                        if (flag == false) {
+                            data.push({
+                                y:0,
+                            });
+                        }
+                    }
+                    return data;
+                }())
+                }]
+            });
+            $('#popupGraficos').modal('show');
+        }
+    });
 });
 
 $( '#graficoAud' ).on( 'click', function() {
