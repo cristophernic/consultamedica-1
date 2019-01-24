@@ -861,7 +861,7 @@ $( '#graficoSacoDos' ).on( 'click', function() {
 
                         if (flag == false) {
                             data.push({
-                                y:0,
+                                y:-2,
                             });
                         }
                     }
