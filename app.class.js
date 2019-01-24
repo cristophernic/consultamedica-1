@@ -321,7 +321,7 @@ class app {
 				let response = '';
 				$.each(data, function(i,value){
 					response += '<tr data-id="' + value.tempdostable_correlativo +'">';
-					response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_fecha + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td><td><i class="fas fa-trash-alt segundo-eliminar"></i></td>';
+					response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_fecha + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_pctpfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_pctca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_cerebelo + '</td><td><i class="fas fa-trash-alt segundo-eliminar"></i></td>';
 					response += '</tr>';
 				});
 				$('#tabla\\.dos').append(response);
