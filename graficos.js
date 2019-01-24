@@ -1939,6 +1939,11 @@ $( '#infecoObsSegTrim1' ).on( 'click', function() {
     $( '#impDoppler3').remove();
     $( '#impDoppler2').remove();
     $( '#impDoppler1').remove();
+    let args = {
+		action: "get",
+		temporal_id: $("#id-paciente").val()
+    }
+    
     $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(respuesta){
 		if (Object.keys(respuesta).length > 0) {
             $('#graficoInfecoObsSegTrimPFEView').highcharts({
@@ -2250,6 +2255,13 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
     $( '#impDoppler3').remove();
     $( '#impDoppler2').remove();
     $( '#impDoppler1').remove();
+    let args = {
+		action: "get",
+		temporal_id: $("#id-paciente").val()
+    }
+    
+    $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(respuesta){
+		if (Object.keys(respuesta).length > 0) {
     $('#graficoCcView').highcharts({
             chart: {
             height: 250
@@ -2591,6 +2603,8 @@ $( '#infecoObsSegTrim2' ).on( 'click', function() {
             }]
     });
     $('#popupGraficos').modal('show');
+}
+});
 });
 
 $( '#graficoTalla' ).on( 'click', function() {
