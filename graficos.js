@@ -679,8 +679,11 @@ $( '#graficoLcnDos' ).on( 'click', function() {
                     }())
                 }]
             });
+            $('#popupGraficos').modal('show');
         }
-        $('#popupGraficos').modal('show');
+        else{
+            alert("No hay datos");
+        }
     });
 
 
@@ -867,6 +870,9 @@ $( '#graficoSacoDos' ).on( 'click', function() {
                 }]
             });
             $('#popupGraficos').modal('show');
+        }
+        else{
+            alert("No hay datos");
         }
     });
 });
