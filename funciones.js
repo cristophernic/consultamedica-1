@@ -2110,8 +2110,12 @@ function pctau() {
 	xpct95[32] = 2.93; xpct95[33] = 2.93; xpct95[34] = 2.91; xpct95[35] = 2.87;
 	xpct95[36] = 2.82; xpct95[37] = 2.75; xpct95[38] = 2.67; xpct95[39] = 2.57;
 	
-	var eg=0;
-	eg=parseFloat(localStorage.eg);
+	var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
+
+	eg = eg.toString();
+	eg = eg.replace(",", ".");
+	eg = Math.trunc(parseFloat(eg));
+
  	var aumb = $('#ipau').val();
 	aumb = aumb.toString();
  	aumb = aumb.replace(",", ".");
@@ -2204,9 +2208,11 @@ function pctacm() {
 	xpct95[32] = 2.93;	xpct95[33] = 2.93;	xpct95[34] = 2.91;	xpct95[35] = 2.87;
 	xpct95[36] = 2.82;	xpct95[37] = 2.75;	xpct95[38] = 2.67;	xpct95[39] = 2.57;
 
-	var eg=0;
+	var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
 
-	eg=parseFloat(localStorage.eg);
+	eg = eg.toString();
+	eg = eg.replace(",", ".");
+	eg = Math.trunc(parseFloat(eg));
 	var acm = $('#ipacm').val();
 	acm = acm.toString();
  	acm = acm.replace(",", ".");
@@ -2311,9 +2317,13 @@ function pctpfe() {
  pct90[19] = 2781;pct90[20] = 3036;pct90[21] = 3291;pct90[22] = 3543;pct90[23] = 3786;
  pct90[24] = 4019;pct90[25] = 4234;
 
- var eg=0;
+ 
  var pfe=0;
- eg=parseFloat(localStorage.eg);
+ var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
+
+ eg = eg.toString();
+ eg = eg.replace(",", ".");
+ eg = Math.trunc(parseFloat(eg));
  pfe=parseInt($("#pfe").val());
 
  if (eg < 15) {  
