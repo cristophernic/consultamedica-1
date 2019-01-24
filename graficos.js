@@ -649,7 +649,7 @@ $( '#graficoLcnDos' ).on( 'click', function() {
                         lcnegx[10] = 14;
                         for (i = 1; i <= 10; i++) {
                             $.each(respuesta, function(i,val){
-                                if (lcnegx[i] >= parseInt(parsefloat(val.temptable_eg))) {
+                                if (lcnegx[i] >= parseInt(parseFloat(val.temptable_eg))) {
                                     var lcn = val.temptable_lcn;
                                     lcn = lcn.toString();
                                     lcn = lcn.replace(",", ".");
