@@ -463,7 +463,7 @@ class app {
 					event.stopPropagation();
 					let args = {
 						action: "del",
-						temporal_id: $("#id-paciente").val(),
+						temporal_id: $(this).parent().parent().data("id")
 					}
 	
 					$.post("https://pacientes.crecimientofetal.cl/temporal/api", args).done(function(data){
