@@ -62,16 +62,6 @@ $(document).ready(function(){
 		$("#eco\\.prim\\.trim\\.no\\.label").button("toggle");
 		$("input[name='ajustarEcoPrimTrim']").button("toggle");
 
-		var dayHoy = new Date();
-
-		var day = ("0" + dayHoy.getDate()).slice(-2);
-		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
-
-		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
-		$("#semanasEcoGen").val(4);
-		$("#semanasEcoGen").val(0);
 		$('a[href="#medidas-eco-prim"]').tab('show');
 	});
 
@@ -165,31 +155,10 @@ $(document).ready(function(){
 		$("#eco\\.seg\\.trim\\.select\\.comentario").val(1);
 		$("#comentarios-eco-dos-inf-dos").val("");
 
-		var dayHoy = new Date();
-
-		var day = ("0" + dayHoy.getDate()).slice(-2);
-		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
-
-		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
-		$("#semanasEcoGen").val(4);
-		$("#semanasEcoGen").val(0);
 		$('a[href="#medidas-eco-seg"]').tab('show');
 	});
 
 	$("#eco\\.doppler\\.nuevo").on("click", function(){
-		var dayHoy = new Date();
-
-		var day = ("0" + dayHoy.getDate()).slice(-2);
-		var month = ("0" + (dayHoy.getMonth() + 1)).slice(-2);
-
-		$("input[name='fum']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$("input[name='fee']").val((day)+"/"+(month)+"/"+dayHoy.getFullYear());
-		$('#id-paciente').val((day)+(month)+dayHoy.getFullYear());
-		$("#semanasEcoGen").val(4);
-		$("#semanasEcoGen").val(0);
-
 		$("#aud").val("");
 		$("#aud > .pivote-uno").html("");
 		$("#aud > .pivote-dos").html("");
