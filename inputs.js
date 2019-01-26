@@ -168,6 +168,10 @@ $( document ).ready(function() {
     $("#boton\\.tres\\.guardar").on("click", function(){
         let id = $("#boton\\.tres\\.guardar").data("id");
         let args = "";
+        
+        let citadoppler =  $("input[name='citadoppler'] :checked").val();
+
+        citadoppler = citadoppler == 1 ? "SI": "NO";
 
         if (id == 0){
             args = {
@@ -182,7 +186,8 @@ $( document ).ready(function() {
                 temptrestable_cm: $("#ipacm").val(),
                 temptrestable_cp: $("#ccp").val(),
                 temptrestable_dv: $("#dv").val(),
-                temptrestable_acm: $("#psmACM").val()
+                temptrestable_acm: $("#psmACM").val(),
+                temptrestable_citadoppler: citadoppler
             }
         }
         else{
@@ -199,7 +204,8 @@ $( document ).ready(function() {
                 temptrestable_cm: $("#ipacm").val(),
                 temptrestable_cp: $("#ccp").val(),
                 temptrestable_dv: $("#dv").val(),
-                temptrestable_acm: $("#psmACM").val()
+                temptrestable_acm: $("#psmACM").val(),
+                temptrestable_citadoppler: citadoppler
             }  
         }
 
