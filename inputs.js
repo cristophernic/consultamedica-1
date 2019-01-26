@@ -58,7 +58,7 @@ $( document ).ready(function() {
     });
 
     $("#nombre-paciente").on("change", function(){
-        $("#paciente\\.id\\.view").html("Paciente Nombre: " + $(this).val());
+        $("#paciente\\.nombre\\.view").html("Paciente Nombre: " + $(this).val());
     });
 
     $("#boton\\.uno\\.guardar").on("click",function(){
