@@ -196,7 +196,7 @@ class app {
 		$('#ecoObsPrimTrimTrisomia').hide();
 		$('#'+div_id).show();
 
-		if (div_id != "home"){
+		if (div_id != "home" && div_id != "about"){
 			$("#contenedor\\.eg").removeClass("d-none");
 		}
 		else{
