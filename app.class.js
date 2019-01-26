@@ -268,7 +268,7 @@ class app {
 			let response = '';
 			$.each(data, function(i,value){
 				response += '<tr data-id="' + value.temptable_id +'">';
-				response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_fecha + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
+				response += '<td>' + value.temptable_rut + '</td><td>' + value.temptable_fecha + '</td><td>' + value.temptable_saco + '</td><td>' + value.temptable_lcn + '</td><td>' + value.temptable_eg + '</td><td>' + value.temptable_citaprimtrim  +'</td><td><i class="fas fa-trash-alt primer-eliminar"></i></td>';
 				response += '</tr>';
 			});
 			$('#tabla\\.uno').append(response);
@@ -321,7 +321,7 @@ class app {
 				let response = '';
 				$.each(data, function(i,value){
 					response += '<tr data-id="' + value.tempdostable_correlativo +'">';
-					response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_fecha + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_pctpfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_pctca + '</td><td>' + value.tempdostable_bvm + '</td><td><i class="fas fa-trash-alt segundo-eliminar"></i></td>';
+					response += '<td>' + value.tempdostable_id + '</td><td>' + value.tempdostable_fecha + '</td><td>' + value.tempdostable_eg + '</td><td>' + value.tempdostable_pfe + '</td><td>' + value.tempdostable_pctpfe + '</td><td>' + value.tempdostable_ca + '</td><td>' + value.tempdostable_pctca + '</td><td>' + value.tempdostable_bvm + '</td><td>' + value.tempdostable_citasegtrim +'</td><td><i class="fas fa-trash-alt segundo-eliminar"></i></td>';
 					response += '</tr>';
 				});
 				$('#tabla\\.dos').append(response);
@@ -396,7 +396,7 @@ class app {
 				let response = '';
 				$.each(data, function(i,value){
 					response += '<tr data-id="' + value.temptrestable_correlativo +'">';
-					response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_fecha + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_au+'</td><td>' + value.temptrestable_cm + '</td><td>' + value.temptrestable_cp + '</td><td><i class="fas fa-trash-alt tercero-eliminar"></i></td>';
+					response += '<td>' + value.temptrestable_id + '</td><td>' + value.temptrestable_fecha + '</td><td>' + value.temptrestable_eg + '</td><td>' + value.temptrestable_put + '</td><td>' + value.temptrestable_au+'</td><td>' + value.temptrestable_cm + '</td><td>' + value.temptrestable_cp + '</td><td>' + value.temptrestable_citadoppler +'</td><td><i class="fas fa-trash-alt tercero-eliminar"></i></td>';
 					response += '</tr>';
 				});
 				$('#tabla\\.tres').append(response);
