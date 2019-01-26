@@ -57,6 +57,10 @@ $( document ).ready(function() {
         let id = $("#boton\\.uno\\.guardar").data("id");
         let args = "";
 
+        let citaprimtrim = $("#citaprimtrim").children("label.active").find('input').val()
+
+        citaprimtrim = citaprimtrim == 1 ? "SI": "NO";
+
         if (id == 0){
             args = {
                 action: "new",
@@ -64,7 +68,8 @@ $( document ).ready(function() {
                 temptable_fecha: $("#fee-uno").val(),
                 temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptable_lcn: $("#lcn").val(),
-                temptable_saco: $("#saco").val()
+                temptable_saco: $("#saco").val(),
+                temptable_citaprimtrim: citaprimtrim
             }
         }
         else{
@@ -75,7 +80,8 @@ $( document ).ready(function() {
                 temptable_fecha: $("#fee-uno").val(),
                 temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptable_lcn: $("#lcn").val(),
-                temptable_saco: $("#saco").val()
+                temptable_saco: $("#saco").val(),
+                temptable_citaprimtrim: citaprimtrim
             }
         }
 
@@ -87,6 +93,10 @@ $( document ).ready(function() {
     $("#boton\\.dos\\.guardar").on("click", function(){
         let id = $("#boton\\.dos\\.guardar").data("id");
         let args = "";
+
+        let citasegtrim = $("#citasegtrim").children("label.active").find('input').val()
+
+        citasegtrim = citasegtrim == 1 ? "SI": "NO";
 
         if (id == 0){
             args = {
@@ -120,7 +130,8 @@ $( document ).ready(function() {
                 tempdostable_cordon: $("#cordon").val(),
                 tempdostable_vasos: $("#vasos").val(),
                 tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
-                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val()
+                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val(),
+                tempdostable_citasegtrim: citasegtrim
             }
         }
         else{
@@ -156,7 +167,8 @@ $( document ).ready(function() {
                 tempdostable_cordon: $("#cordon").val(),
                 tempdostable_vasos: $("#vasos").val(),
                 tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
-                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val()
+                tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val(),
+                tempdostable_citasegtrim: citasegtrim
             }
         }
 
