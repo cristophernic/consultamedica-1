@@ -53,6 +53,14 @@ $( document ).ready(function() {
         });
     });
 
+    $("#id-paciente").on("change", function(){
+        $("#paciente\\.id\\.view").html("Paciente ID (RUT): " + $(this).val());
+    });
+
+    $("#nombre-paciente").on("change", function(){
+        $("#paciente\\.id\\.view").html("Paciente Nombre: " + $(this).val());
+    });
+
     $("#boton\\.uno\\.guardar").on("click",function(){
         let id = $("#boton\\.uno\\.guardar").data("id");
         let args = "";
