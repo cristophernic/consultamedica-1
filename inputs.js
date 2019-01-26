@@ -169,7 +169,7 @@ $( document ).ready(function() {
         let id = $("#boton\\.tres\\.guardar").data("id");
         let args = "";
         
-        let citadoppler =  $("input[name='citadoppler'] :checked").val();
+        let citadoppler = $("#citadoppler").children("label.active").find('input').val()
 
         citadoppler = citadoppler == 1 ? "SI": "NO";
 
