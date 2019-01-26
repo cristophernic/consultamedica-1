@@ -54,12 +54,15 @@ $( document ).ready(function() {
     });
 
     $("#id-paciente").on("change", function(){
-        $("#paciente\\.id\\.view").html("Paciente ID (RUT): " + $(this).val());
+        $("#paciente\\.id\\.view").html("<strong>Paciente ID (RUT):</strong> " + $(this).val());
     });
 
     $("#nombre-paciente").on("change", function(){
-        $("#paciente\\.nombre\\.view").html("Paciente Nombre: " + $(this).val());
+        $("#paciente\\.nombre\\.view").html("<strong>Paciente Nombre:</strong> " + $(this).val());
     });
+
+    $("#id-paciente").trigger("change");
+    $("#nombre-paciente").trigger("change");
 
     $("#boton\\.uno\\.guardar").on("click",function(){
         let id = $("#boton\\.uno\\.guardar").data("id");
