@@ -83,6 +83,7 @@ class app {
 		if (this.hash=="#inicio"){
 			this.displayElement("home");
 			this.clearData();
+			this.resetInputs();
 		}
 		else if (this.hash=="#about"){
 			this.displayElement("about");
