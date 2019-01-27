@@ -43,12 +43,6 @@ function activarBotones() {
 		if (this.id != "fee-uno"){
 			$('#fee-uno').datepicker('setValue', localStorage.fee);
 		}
-		if (this.id != "fee-dos"){
-			$('#fee-dos').datepicker('setValue', localStorage.fee);
-		}
-		if (this.id != "fee-tres"){
-			$('#fee-tres').datepicker('setValue', localStorage.fee);
-		}
 		var semanas = Math.trunc(localStorage.eg)
 		var dias =  Math.trunc((localStorage.eg - Math.trunc(localStorage.eg)) * 10)
 
