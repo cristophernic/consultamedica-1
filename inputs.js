@@ -104,7 +104,39 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.dos\\.guardar").on("click", function(){
-        let id = $("#boton\\.dos\\.guardar").data("id");
+        $("#graficosTitle").html("Guardar exámen segundo tercer trimestre");
+        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
+        $("#consentimientoMensaje > .btn").on("click", function(){
+            let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
+            segundoCallback(consentimiento);
+            $("#popupGraficos").modal("hide");
+        });
+        $("#impDoppler1").remove();
+        $("#popupGraficos").modal("show");
+    });
+
+    $("#boton\\.tres\\.guardar").on("click", function(){
+        $("#graficosTitle").html("Guardar exámen doppler");
+        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
+        $("#consentimientoMensaje > .btn").on("click", function(){
+            let consentimiento = $("#consentimientoMensaje").delay( 800 ).children("label.active").find('input').val();
+            dopplerCallback(consentimiento);
+            $("#popupGraficos").modal("hide");
+        });
+        $("#impDoppler1").remove();
+        $("#popupGraficos").modal("show");
+    });
+
+    $("#link\\.go\\.pacientes").on("click", function(){
+        $("#graficosTitle").html("Pacientes");
+        aplication.loadPacientes();
+        $("#popupGraficos").modal("show");
+    });
+
+});
+
+function segundoCallback(consentimiento){
+    let id = $("#boton\\.dos\\.guardar").data("id");
         let args = "";
 
         let citasegtrim = $("#citasegtrim").children("label.active").find('input').val()
@@ -188,25 +220,7 @@ $( document ).ready(function() {
         $.post("https://pacientes.crecimientofetal.cl/temporal/segundo", args).done(function(data){
             aplication.loadSegtrim();
         });
-    });
-
-    $("#boton\\.tres\\.guardar").on("click", function(){
-        $("#graficosTitle").html("Guardar exámen doppler");
-        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
-        $("#consentimientoMensaje > .btn").on("click", function(){
-            let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
-            dopplerCallback(consentimiento);
-        });
-        $("#popupGraficos").modal("show");consentimientoMensaje
-    });
-
-    $("#link\\.go\\.pacientes").on("click", function(){
-        $("#graficosTitle").html("Pacientes");
-        aplication.loadPacientes();
-        $("#popupGraficos").modal("show");
-    });
-
-});
+}
 
 function dopplerCallback(consentimiento){
     let id = $("#boton\\.tres\\.guardar").data("id");
