@@ -65,42 +65,15 @@ $( document ).ready(function() {
     $("#nombre-paciente").trigger("change");
 
     $("#boton\\.uno\\.guardar").on("click",function(){
-        let id = $("#boton\\.uno\\.guardar").data("id");
-        let args = "";
-
-        let citaprimtrim = $("#citaprimtrim").children("label.active").find('input').val()
-
-        citaprimtrim = citaprimtrim == 1 ? "SI": "NO";
-
-        if (id == 0){
-            args = {
-                action: "new",
-                temporal_id: $("#id-paciente").val(),
-                temptable_fecha: $("#fee-uno").val(),
-                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-                temptable_lcn: $("#lcn").val(),
-                temptable_saco: $("#saco").val(),
-                temptable_citaprimtrim: citaprimtrim,
-                temptable_consentimiento: citaprimtrim
-            }
-        }
-        else{
-            args = {
-                action: "set",
-                temporal_id: $("#id-paciente").val(),
-                temptable_id: id,
-                temptable_fecha: $("#fee-uno").val(),
-                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-                temptable_lcn: $("#lcn").val(),
-                temptable_saco: $("#saco").val(),
-                temptable_citaprimtrim: citaprimtrim,
-                temptable_consentimiento: citaprimtrim
-            }
-        }
-
-        $.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
-            aplication.loadPrimtrim();
+        $("#graficosTitle").html("Guardar exámen segundo tercer trimestre");
+        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
+        $("#consentimientoMensaje > .btn").on("click", function(){
+            let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
+            primeroCallback(consentimiento);
+            $("#popupGraficos").modal("hide");
         });
+        $("#impDoppler1").remove();
+        $("#popupGraficos").modal("show");
     });
 
     $("#boton\\.dos\\.guardar").on("click", function(){
@@ -119,7 +92,7 @@ $( document ).ready(function() {
         $("#graficosTitle").html("Guardar exámen doppler");
         $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
         $("#consentimientoMensaje > .btn").on("click", function(){
-            let consentimiento = $("#consentimientoMensaje").delay( 800 ).children("label.active").find('input').val();
+            let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
             dopplerCallback(consentimiento);
             $("#popupGraficos").modal("hide");
         });
@@ -134,6 +107,45 @@ $( document ).ready(function() {
     });
 
 });
+
+function primeroCallback(consentimiento){
+    let id = $("#boton\\.uno\\.guardar").data("id");
+        let args = "";
+
+        let citaprimtrim = $("#citaprimtrim").children("label.active").find('input').val()
+
+        citaprimtrim = citaprimtrim == 1 ? "SI": "NO";
+
+        if (id == 0){
+            args = {
+                action: "new",
+                temporal_id: $("#id-paciente").val(),
+                temptable_fecha: $("#fee-uno").val(),
+                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptable_lcn: $("#lcn").val(),
+                temptable_saco: $("#saco").val(),
+                temptable_citaprimtrim: citaprimtrim,
+                temptable_consentimiento: consentimiento
+            }
+        }
+        else{
+            args = {
+                action: "set",
+                temporal_id: $("#id-paciente").val(),
+                temptable_id: id,
+                temptable_fecha: $("#fee-uno").val(),
+                temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+                temptable_lcn: $("#lcn").val(),
+                temptable_saco: $("#saco").val(),
+                temptable_citaprimtrim: citaprimtrim,
+                temptable_consentimiento: consentimiento
+            }
+        }
+
+        $.post("https://pacientes.crecimientofetal.cl/temporal/primer", args).done(function(data){
+            aplication.loadPrimtrim();
+        });
+}
 
 function segundoCallback(consentimiento){
     let id = $("#boton\\.dos\\.guardar").data("id");
@@ -176,7 +188,8 @@ function segundoCallback(consentimiento){
                 tempdostable_vasos: $("#vasos").val(),
                 tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
                 tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val(),
-                tempdostable_citasegtrim: citasegtrim
+                tempdostable_citasegtrim: citasegtrim,
+                tempdostable_consentimiento: consentimiento
             }
         }
         else{
@@ -213,7 +226,8 @@ function segundoCallback(consentimiento){
                 tempdostable_vasos: $("#vasos").val(),
                 tempdostable_comentario: $("#eco\\.seg\\.trim\\.select\\.comentario").val(),
                 tempdostable_comentarios: $("#comentarios-eco-dos-inf-dos").val(),
-                tempdostable_citasegtrim: citasegtrim
+                tempdostable_citasegtrim: citasegtrim,
+                tempdostable_consentimiento: consentimiento
             }
         }
 
