@@ -362,7 +362,7 @@ class app {
 						$("#incersion").val(data.tempdostable_incersion).trigger("change");
 						$("#grado-placenta").val(data.tempdostable_grado).trigger("change");
 						$("#liq-cualitativo-eco").val(data.tempdostable_liq).trigger("change");
-						$("#bvmEcoDos").val(data.tempdostable_bvmEcoDos).trigger("change");
+						$("#bvmEcoDos").val(data.tempdostable_bvmEcoDos);
 						$("#cordon").val(data.tempdostable_cordon).trigger("change");
 						$("#vasos").val(data.tempdostable_vasos).trigger("change");
 						$("#eco\\.seg\\.trim\\.select\\.comentario").val(data.tempdostable_comentario);
