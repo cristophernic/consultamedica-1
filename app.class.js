@@ -120,14 +120,17 @@ class app {
 					let response = '';
 				}
 			});
+			$("#eco\\.prim\\.trim\\.nuevo").trigger("click");
 		}
 		else if (this.hash=="#ecoDoppler"){
 			this.displayElement("ecoDoppler");
 			this.loadDoppler();
+			$("#eco\\.doppler\\.nuevo").trigger("click");
 		}
 		else if (this.hash=="#ecoObsSegTrim"){
 			this.displayElement("ecoObsSegTrim");
 			this.loadSegtrim();
+			$("#eco\\.seg\\.trim\\.nuevo").trigger("click");
 		}
 		else if (this.hash=="#ecoObsPrimTrim"){
 			this.displayElement("ecoObsPrimTrim");
