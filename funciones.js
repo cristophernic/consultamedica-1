@@ -1438,7 +1438,7 @@ function deDBP() {
 	DBPMas2DE[26] = 97;	DBPMas2DE[27] = 106;
 
 	var eg=0;
-	eg=parseFloat(localStorage.eg);
+	eg=$("#semanasEcoGen").val() ;
 	var dbp = $("#dbp").val();
 	var dof = $("#dof").val();
 	dbp = dbp.toString();
@@ -1501,7 +1501,7 @@ function calcdof(){
 	var dof = $("#dof").val();
 
 	var eg=0;
-	eg=Math.trunc(parseFloat(localStorage.eg));
+	eg=$("#semanasEcoGen").val() ;
 	
 	if (eg > 9 && dof > 0){
 		var DOF05PCT = [];
@@ -1585,7 +1585,7 @@ function pctcc() {
 
  var eg=0, cc=0;
 
- eg=Math.trunc(parseFloat(localStorage.eg));
+ eg=$("#semanasEcoGen").val() ;
  cc=parseInt(document.getElementById("cc").value);
 
  if (eg < 12) {
@@ -1643,7 +1643,7 @@ function pctca() {
 
  var eg=0, ca=0;
 
- eg=Math.trunc(parseFloat(localStorage.eg));
+ eg=$("#semanasEcoGen").val() ;
  ca=parseInt(document.getElementById("ca").value);
 
  if (eg < 12) {
@@ -1699,7 +1699,7 @@ function pctlf() {
 
  var eg=0, lf=0;
 
- eg=Math.trunc(parseFloat(localStorage.eg));
+ eg=$("#semanasEcoGen").val() ;
  lf=parseInt(document.getElementById("lf").value);
 
  if (eg < 12) {
@@ -1806,7 +1806,7 @@ var pct2dsmas = [];
 
  var eg=0;
  var cb=0;
- eg=Math.trunc(parseFloat(localStorage.eg));
+ eg=$("#semanasEcoGen").val() ;
  cb=parseInt(document.getElementById("cerebelo").value);
 
  if (eg < 15) {$("#cbPct").val("0");$('#cerebeloPctRpt').val("0")}
@@ -1859,7 +1859,7 @@ function pctlh() {
         pct05[40] = 61.9;  pct95[40] = 70.8;
 	
 	var eg=0;
- 	eg=Math.trunc(parseFloat(localStorage.eg));
+ 	eg=$("#semanasEcoGen").val() ;
  	var lh=parseInt($("#lh").val());
 
         if (eg < 12) {
@@ -2031,7 +2031,7 @@ function pctdv() {
 
  var eg=0;
  
- eg=parseFloat(localStorage.eg);
+ eg=$("#semanasEcoGen").val() ;
  var dv = document.getElementById("dv").value;
 dv = dv.toString();
  dv = dv.replace(",", ".");
@@ -2110,7 +2110,7 @@ function pctau() {
 	xpct95[32] = 2.93; xpct95[33] = 2.93; xpct95[34] = 2.91; xpct95[35] = 2.87;
 	xpct95[36] = 2.82; xpct95[37] = 2.75; xpct95[38] = 2.67; xpct95[39] = 2.57;
 	
-	var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
+	var eg= $("#semanasEcoGen").val() ;
 
 	eg = eg.toString();
 	eg = eg.replace(",", ".");
@@ -2208,7 +2208,7 @@ function pctacm() {
 	xpct95[32] = 2.93;	xpct95[33] = 2.93;	xpct95[34] = 2.91;	xpct95[35] = 2.87;
 	xpct95[36] = 2.82;	xpct95[37] = 2.75;	xpct95[38] = 2.67;	xpct95[39] = 2.57;
 
-	var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
+	var eg= $("#semanasEcoGen").val() ;
 
 	eg = eg.toString();
 	eg = eg.replace(",", ".");
@@ -2319,7 +2319,7 @@ function pctpfe() {
 
  
  var pfe=0;
- var eg= $("#semanasEcoGen").val() + "." + $("#diasEcoGen").val();
+ var eg= $("#semanasEcoGen").val() ;
 
  eg = eg.toString();
  eg = eg.replace(",", ".");
@@ -2373,7 +2373,7 @@ function bvm() {
  pct95[20] = 71; pct95[21] = 70; pct95[22] = 68; pct95[23] = 66;
  pct95[24] = 62;
  var eg=0, bvm=0;
- eg=parseFloat(localStorage.eg);
+ eg=$("#semanasEcoGen").val() ;
  bvm=parseInt($("#bvm").val());
  if (eg < 16) {  
   //
@@ -2413,7 +2413,7 @@ function bvmDoppler() {
 
  var eg=0;
  var bvm=0;
- eg=parseFloat(localStorage.eg);
+ eg=$("#semanasEcoGen").val() ;
  bvm=parseInt($("#bvmDoppler").val());
  if (eg < 16) {  
   //
@@ -2456,7 +2456,7 @@ function bvmEcoDos() {
      pct95[24] = 62;
  var eg=0;
  var bvm=0;
- eg=parseFloat(localStorage.eg);
+ eg=$("#semanasEcoGen").val() ;
  bvm=parseInt($("#bvmEcoDos").val());
  if (eg < 16) {  
   //
@@ -2505,7 +2505,7 @@ function valccca() {
  pct97[25] = 1.08;
 
  var eg=0;
- eg=parseFloat(localStorage.eg);
+ eg=$("#semanasEcoGen").val() ;
 
  if (eg < 15) {
    $("#cccaPctVal").val('0');
@@ -2624,7 +2624,7 @@ function pctut() {
 	pct95[24] = 0.99; pct95[25] = 0.97;	pct95[26] = 0.95; pct95[27] = 0.94;
 	pct95[28] = 0.92; pct95[29] = 0.91;	pct95[30] = 0.91;
 	var eg=0;
-	eg=parseFloat(localStorage.eg);
+	eg=$("#semanasEcoGen").val() ;
 	var utd = $("#aud").val();
 	utd = utd.toString(); 
  	utd = utd.replace(",", ".");
@@ -2738,7 +2738,7 @@ function pctUtApi(ut) {
 	pct95[28] = 0.92; pct95[29] = 0.91;	pct95[30] = 0.91;
 	
 	var eg=0;
-	eg=parseFloat(localStorage.eg);
+	eg=$("#semanasEcoGen").val() ;
 	ut = ut.toString(); 
  	ut = ut.replace(",", ".");
  	ut = parseFloat(ut);
