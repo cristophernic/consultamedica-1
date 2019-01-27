@@ -73,6 +73,7 @@ $( document ).ready(function() {
             $("#popupGraficos").modal("hide");
         });
         $("#impDoppler1").remove();
+        $("#impEcoObsSegTrim1").remove();
         $("#popupGraficos").modal("show");
     });
 
@@ -85,6 +86,7 @@ $( document ).ready(function() {
             $("#popupGraficos").modal("hide");
         });
         $("#impDoppler1").remove();
+        $("#impEcoObsSegTrim1").remove();
         $("#popupGraficos").modal("show");
     });
 
@@ -97,6 +99,7 @@ $( document ).ready(function() {
             $("#popupGraficos").modal("hide");
         });
         $("#impDoppler1").remove();
+        $("#impEcoObsSegTrim1").remove();
         $("#popupGraficos").modal("show");
     });
 
