@@ -80,7 +80,8 @@ $( document ).ready(function() {
                 temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptable_lcn: $("#lcn").val(),
                 temptable_saco: $("#saco").val(),
-                temptable_citaprimtrim: citaprimtrim
+                temptable_citaprimtrim: citaprimtrim,
+                temptable_consentimiento: citaprimtrim
             }
         }
         else{
@@ -92,7 +93,8 @@ $( document ).ready(function() {
                 temptable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptable_lcn: $("#lcn").val(),
                 temptable_saco: $("#saco").val(),
-                temptable_citaprimtrim: citaprimtrim
+                temptable_citaprimtrim: citaprimtrim,
+                temptable_consentimiento: citaprimtrim
             }
         }
 
@@ -113,7 +115,7 @@ $( document ).ready(function() {
             args = {
                 action: "new",
                 tempdostable_id: $("#id-paciente").val(),
-                tempdostable_fecha: $("#fee-dos").val(),
+                tempdostable_fecha: $("#fee-uno").val(),
                 tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 tempdostable_dbp: $("#dbp").val(),
                 tempdostable_dof: $("#dof").val(), 
@@ -150,7 +152,7 @@ $( document ).ready(function() {
                 action: "set",
                 tempdostable_correlativo: id,
                 tempdostable_id: $("#id-paciente").val(),
-                tempdostable_fecha: $("#fee-dos").val(),
+                tempdostable_fecha: $("#fee-uno").val(),
                 tempdostable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 tempdostable_dbp: $("#dbp").val(),
                 tempdostable_dof: $("#dof").val(), 
@@ -200,7 +202,7 @@ $( document ).ready(function() {
             args = {
                 action: "new",
                 temptrestable_id: $("#id-paciente").val(),
-                temptrestable_fecha: $("#fee-tres").val(),
+                temptrestable_fecha: $("#fee-uno").val(),
                 temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptrestable_utd: $("#aud").val(),
                 temptrestable_uti: $("#aui").val(), 
@@ -218,7 +220,7 @@ $( document ).ready(function() {
                 action: "set",
                 temptrestable_correlativo: id,
                 temptrestable_id: $("#id-paciente").val(),
-                temptrestable_fecha: $("#fee-tres").val(),
+                temptrestable_fecha: $("#fee-uno").val(),
                 temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
                 temptrestable_utd: $("#aud").val(),
                 temptrestable_uti: $("#aui").val(), 

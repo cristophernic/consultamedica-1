@@ -63,6 +63,7 @@ $(document).ready(function(){
 		$("input[name='ajustarEcoPrimTrim']").button("toggle");
 
 		$('a[href="#medidas-eco-prim"]').tab('show');
+		$("#boton\\.uno\\.guardar").data("id",0);
 	});
 
 	$("select[name='edad_materna']").on("change", function(){
@@ -156,6 +157,7 @@ $(document).ready(function(){
 		$("#comentarios-eco-dos-inf-dos").val("");
 
 		$('a[href="#medidas-eco-seg"]').tab('show');
+		$("#boton\\.dos\\.guardar").data("id",0);
 	});
 
 	$("#eco\\.doppler\\.nuevo").on("click", function(){
@@ -225,6 +227,7 @@ $(document).ready(function(){
 		$("#ubicacion-doppler").val("anterior");
 		$("#comentarios-doppler").val("");
 		$('a[href="#medidas-eco-doppler"]').tab('show');
+		$("#boton\\.tres\\.guardar").data("id",0);
 	})
 
 	$("#nuevo\\.paciente\\.button\\.reset").on("click", function(){
@@ -947,22 +950,6 @@ $( document ).ready(function() {
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
-			
-			$('#fee-dos').datepicker();
-			$('#fee-dos').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-			$('#fee-uno').datepicker();
-			$('#fee-uno').datepicker()
-				  .on('changeDate', function(ev){
-				    $(this).trigger("change");
-				  });
-				  $('#fee-tres').datepicker();
-				  $('#fee-tres').datepicker()
-						.on('changeDate', function(ev){
-						  $(this).trigger("change");
-						});
 						
 				  $('#infadicionalNoController').on('click', function(){
 					if ($('#infadicionalView').hasClass('d-none') == false){
