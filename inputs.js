@@ -192,8 +192,8 @@ $( document ).ready(function() {
 
     $("#boton\\.tres\\.guardar").on("click", function(){
         $("#graficosTitle").html("Guardar exámen doppler");
-        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿La paciente autoriza el uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
-        $("#consentimientoMensaje > btn").on("click", function(){
+        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿Paciente autoriza uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
+        $("#consentimientoMensaje > .btn").on("click", function(){
             let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
             dopplerCallback(consentimiento);
         });
