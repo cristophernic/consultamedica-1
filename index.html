@@ -44,20 +44,28 @@
         <div class="card d-none" id="contenedor.eg">
             <div class="card-body p-1">
                 <h5 class="card-title text-primary text-center">Cálculo de edad gestacional</h5>
-                <div class="d-flex flex-row justify-content-center">
-                    <p class="p-2">Fecha de última mestruación</p>
-                    <div class="p-2"><input style="width: 7rem;" class="form-control" type="text" data-date-format="dd/mm/yyyy" data-weekStart="1" onfocus="blur();" name="fum" id="fum-dos"></div>
-                    <p class="p-2">Edad Gestacional</p>
-                    <div class="p-2"><select id="semanasEcoGen" class="form-control"></select></div>
-                    <div class="p-2"><select id="diasEcoGen" class="form-control"></select></div>
-                    <p class="p-2">Fecha probable de parto</p>
-                    <div class="p-2"><input style="width: 7rem;" type="text" class="form-control" name="fpp" readonly></div>
+                <div class="row">
+                    <div class="col-4">
+                        <p class="p-2">Fecha de última mestruación</p>
+                        <div class="p-2"><input style="width: 7rem;" class="form-control" type="text" data-date-format="dd/mm/yyyy" data-weekStart="1" onfocus="blur();" name="fum" id="fum-dos"></div>
+                    </div>
+                    <div class="col-4">
+                        <p class="p-2">Edad Gestacional</p>
+                        <div class="p-2"><select id="semanasEcoGen" class="form-control"></select></div>
+                        <div class="p-2"><select id="diasEcoGen" class="form-control"></select></div>
+                    </div>
+                    <div class="col-4">
+                        <p class="p-2">Fecha probable de parto</p>
+                        <div class="p-2"><input style="width: 7rem;" type="text" class="form-control" name="fpp" readonly></div>
+                    </div>
                 </div>
-                <div class="d-flex flex-row justify-content-center">
-                    <p class="p-2" id="paciente.id.view"><strong>Paciente ID (RUT):</strong></p>
-                    <p class="p-2" id="paciente.nombre.view"><strong>Paciente Nombre:</strong></p>
-                    <p class="p-2">Fecha de examen</p>
-                    <div class="p-2"><input style="width: 7rem;" type="text" class="form-control" name="fee" id="fee-uno" data-date-format="dd/mm/yyyy" onfocus="blur();"></div>
+                <div class="row">
+                    <div class="col-4"><p class="p-2" id="paciente.id.view"><strong>Paciente ID (RUT):</strong></p></div>
+                    <div class="col-4"><p class="p-2" id="paciente.nombre.view"><strong>Paciente Nombre:</strong></p></div>
+                    <div class="col-4">
+                        <p class="p-2">Fecha de examen</p>
+                        <div class="p-2"><input style="width: 7rem;" type="text" class="form-control" name="fee" id="fee-uno" data-date-format="dd/mm/yyyy" onfocus="blur();"></div>
+                    </div>  
                 </div>
             </div>
         </div>
