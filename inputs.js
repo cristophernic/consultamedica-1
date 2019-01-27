@@ -191,52 +191,13 @@ $( document ).ready(function() {
     });
 
     $("#boton\\.tres\\.guardar").on("click", function(){
-        let id = $("#boton\\.tres\\.guardar").data("id");
-        let args = "";
-        
-        let citadoppler = $("#citadoppler").children("label.active").find('input').val()
-
-        citadoppler = citadoppler == 1 ? "SI": "NO";
-
-        if (id == 0){
-            args = {
-                action: "new",
-                temptrestable_id: $("#id-paciente").val(),
-                temptrestable_fecha: $("#fee-uno").val(),
-                temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-                temptrestable_utd: $("#aud").val(),
-                temptrestable_uti: $("#aui").val(), 
-                temptrestable_put: $("#auprom").val(), 
-                temptrestable_au: $("#ipau").val(), 
-                temptrestable_cm: $("#ipacm").val(),
-                temptrestable_cp: $("#ccp").val(),
-                temptrestable_dv: $("#dv").val(),
-                temptrestable_acm: $("#psmACM").val(),
-                temptrestable_citadoppler: citadoppler
-            }
-        }
-        else{
-            args = {
-                action: "set",
-                temptrestable_correlativo: id,
-                temptrestable_id: $("#id-paciente").val(),
-                temptrestable_fecha: $("#fee-uno").val(),
-                temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
-                temptrestable_utd: $("#aud").val(),
-                temptrestable_uti: $("#aui").val(), 
-                temptrestable_put: $("#auprom").val(), 
-                temptrestable_au: $("#ipau").val(), 
-                temptrestable_cm: $("#ipacm").val(),
-                temptrestable_cp: $("#ccp").val(),
-                temptrestable_dv: $("#dv").val(),
-                temptrestable_acm: $("#psmACM").val(),
-                temptrestable_citadoppler: citadoppler
-            }  
-        }
-
-        $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
-            aplication.loadDoppler();
+        $("#graficosTitle").html("Guardar exámen doppler");
+        $("#graficosBody").html('<div class="row"><div class="col-8"><h5 class="card-title text-center">¿La paciente autoriza el uso de la información para investigación clínica?</h5></div><div class="col-4"><div class="btn-group btn-group-toggle" id="consentimientoMensaje" data-toggle="buttons"><label class="btn btn-outline-primary active"><input type="radio" value="0" checked=""> NO</label><label class="btn btn-outline-primary"><input type="radio" value="1"> SI</label></div></div></div>');
+        $("#consentimientoMensaje > btn").on("click", function(){
+            let consentimiento = $("#consentimientoMensaje").children("label.active").find('input').val();
+            dopplerCallback(consentimiento);
         });
+        $("#popupGraficos").modal("show");consentimientoMensaje
     });
 
     $("#link\\.go\\.pacientes").on("click", function(){
@@ -246,3 +207,54 @@ $( document ).ready(function() {
     });
 
 });
+
+function dopplerCallback(consentimiento){
+    let id = $("#boton\\.tres\\.guardar").data("id");
+    let args = "";
+    
+    let citadoppler = $("#citadoppler").children("label.active").find('input').val()
+
+    citadoppler = citadoppler == 1 ? "SI": "NO";
+
+    if (id == 0){
+        args = {
+            action: "new",
+            temptrestable_id: $("#id-paciente").val(),
+            temptrestable_fecha: $("#fee-uno").val(),
+            temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+            temptrestable_utd: $("#aud").val(),
+            temptrestable_uti: $("#aui").val(), 
+            temptrestable_put: $("#auprom").val(), 
+            temptrestable_au: $("#ipau").val(), 
+            temptrestable_cm: $("#ipacm").val(),
+            temptrestable_cp: $("#ccp").val(),
+            temptrestable_dv: $("#dv").val(),
+            temptrestable_acm: $("#psmACM").val(),
+            temptrestable_citadoppler: citadoppler,
+            temptrestable_consentimiento: consentimiento
+        }
+    }
+    else{
+        args = {
+            action: "set",
+            temptrestable_correlativo: id,
+            temptrestable_id: $("#id-paciente").val(),
+            temptrestable_fecha: $("#fee-uno").val(),
+            temptrestable_eg: $("#semanasEcoGen").val() + "," + $("#diasEcoGen").val(),
+            temptrestable_utd: $("#aud").val(),
+            temptrestable_uti: $("#aui").val(), 
+            temptrestable_put: $("#auprom").val(), 
+            temptrestable_au: $("#ipau").val(), 
+            temptrestable_cm: $("#ipacm").val(),
+            temptrestable_cp: $("#ccp").val(),
+            temptrestable_dv: $("#dv").val(),
+            temptrestable_acm: $("#psmACM").val(),
+            temptrestable_citadoppler: citadoppler,
+            temptrestable_consentimiento: consentimiento
+        }  
+    }
+
+    $.post("https://pacientes.crecimientofetal.cl/temporal/tercero", args).done(function(data){
+        aplication.loadDoppler();
+    });
+}
