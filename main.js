@@ -552,7 +552,7 @@ $(document).ready(function(){
 			ajustarProgreso($("#aupromTamizaje").val(), "auTamizajePct");
 		}
 	});
-	
+
 	$("#auiTamizaje").on("keyup", function(e){
 		if ( e.which == 13 ) {
 			e.preventDefault();
@@ -950,6 +950,11 @@ $( document ).ready(function() {
 				  .on('changeDate', function(ev){
 				    $(this).trigger("change");
 				  });
+				  $('#fee-uno').datepicker();
+				  $('#fee-uno').datepicker()
+						.on('changeDate', function(ev){
+						  $(this).trigger("change");
+						});
 						
 				  $('#infadicionalNoController').on('click', function(){
 					if ($('#infadicionalView').hasClass('d-none') == false){
